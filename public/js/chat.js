@@ -246,6 +246,7 @@ function myFunc() {
 
     //Loading messages on left pane
     function function_pvt() {
+      window.history.replaceState("object or string", '' , '/');
       document.getElementById("inbox-message-1").style.display = "None";
       if (menuContent.style.display == "block") {
         menuContent.style.display = "";
@@ -350,6 +351,7 @@ function myFunc() {
 
     }
     function function_category() {
+      window.history.replaceState("object or string", '' , '/');
       document.getElementById("inbox-message-1").style.display = "None";
       $('#menu_active').text('Groups');
       var e = document.getElementById("category_click");
@@ -391,6 +393,7 @@ function myFunc() {
 
     }
     function function_category_common() {
+      window.history.replaceState("object or string", '' , '/');
       document.getElementById("inbox-message-1").style.display = "None";
       $('#menu_active').text('Categories');
       var e = document.getElementById("category_click");
@@ -470,7 +473,7 @@ function myFunc() {
     }
 
     function load_topics(x, param=null) {
-      // console.log(x.split("##").length);
+      // console.log(x);
       y = x;
       if(x && x.split("##").length == 1){
         $('#holder5').html("");
@@ -664,6 +667,7 @@ function myFunc() {
 
         tid = y[1];
         var tslug = y[0];
+        window.history.pushState("object or string", tid , '/t/'+tslug+'/'+tid);
         // console.log(tslug);
         $('#slug').attr('name', tslug);
         if(topic_head!= null && topic_head != undefined){
@@ -1067,10 +1071,12 @@ function myFunc() {
           var fields = message_id.split('_');
           var topic_id = fields[2];
           var post_number = fields[3];
+          var textarea = document.getElementById('replyMessage');
           $('.selected_msg').empty();
           $('.rm_btn').remove();
           $(".selected_msg").css('margin-left', "7%");
           $(".display_replies").css('opacity', "100");
+          $(".display_replies").css('height', (Number(textarea.style.height.split("px")[0])+10)+"px");
           $('.selected_msg').attr("id","rmv_btn_"+topic_id+'_'+post_number);
           $('.selected_msg').append(event.target.title);
           $('.display_replies').append('<button onclick="removeReplyMessage(this)" type="button" name="cancel" class="btn btn-sm rm_btn">X</button>');
@@ -1337,9 +1343,9 @@ function load_more_topics(){
   if (topic_div != undefined && topic_div != null && topic_div!= "undefined"){
     var category_id = topic_div.split("/")[3].split("?")[0];
     var category_name = topic_div.split("/")[2];
-    var page_number = topic_div.split("/")[3];
-
-    page_number = page_number.split("=")[1];
+    var page_number = topic_div.split("/")[3].split("page=")[1];
+    page_number = page_number.charAt(0);
+    // page_number = page_number.split("=")[1];
     // console.log(page_number);
     x = category_name+"/"+ category_id +"/load/"+page_number+"###"
 

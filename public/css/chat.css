@@ -463,6 +463,8 @@ background: rgba(36, 117, 47, 0.4);
   bottom: 70px;
   width: 75%;
   opacity: 0.01;
+  max-height: 290px;
+  min-height: 60px;
 }
 
 
@@ -2271,3 +2273,7 @@ div.reply_msg{
   width: calc(100% - 160px);
   padding-top:13px;
 }
+
+/*.bottom_editor{
+  position: fixed;
+}*/
