@@ -501,7 +501,7 @@ function myFunc() {
         .done(function (data) {
           // console.log("tyutut")
           // console.log(data);
-          $('#holder').html("");
+          $('#holder9').html("");
           var elements = '';
 
           for (var i = 0; i < data.length; i++) {
