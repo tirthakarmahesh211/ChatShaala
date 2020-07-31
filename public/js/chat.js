@@ -497,7 +497,7 @@ function myFunc() {
       })
         .done(function (data) {
           // console.log("tyutut")
-          console.log(data);
+          // console.log(data);
           $('#holder2').html("");
           var elements = '';
 
