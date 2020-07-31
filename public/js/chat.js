@@ -21,6 +21,7 @@ window.onload = function () {
     document.getElementById("holder4").style.display = "None"
     document.getElementById("holder2").style.display = "None";
     document.getElementById("holder5").style.display = "None";
+    document.getElementById("holder9").style.display = "None";
     document.getElementById("holder7").style.display = "Block";
 
     $('#menu_active').text('Latest');
@@ -41,6 +42,7 @@ window.onload = function () {
       document.getElementById("holder6").style.display = "None";
       document.getElementById("holder4").style.display = "None";
       document.getElementById("holder7").style.display = "None";
+      document.getElementById("holder9").style.display = "None";
     document.getElementById("latest_click").click();
   }
   // console.log(document.getElementById("specific_posts_page").getAttribute("name"));
@@ -468,11 +470,12 @@ function myFunc() {
       }
 
       document.getElementById("holder5").style.display = "None";
-      document.getElementById("holder2").style.display = "Block";
+      document.getElementById("holder2").style.display = "None";
       document.getElementById("holder6").style.display = "None";
       document.getElementById("holder4").style.display = "None";
       document.getElementById("holder7").style.display = "None";
       document.getElementById("holder8").style.display = "None";
+      document.getElementById("holder9").style.display = "Block";
 
 
       $('#menu_active').text('Latest');
@@ -485,12 +488,12 @@ function myFunc() {
       e = document.getElementById("latest_click");
       e.classList.add("active-tab");
 
-      var my_div = $("#holder2");
+      var my_div = $("#holder9");
 
       // console.log(my_div)
       // var username = $('#curr_user').attr('name');
       // alert("hi");
-      document.getElementById("holder2").style.display = "Block";
+      document.getElementById("holder9").style.display = "Block";
 
       $.ajax({
         url: "/latest/" 
@@ -498,7 +501,7 @@ function myFunc() {
         .done(function (data) {
           // console.log("tyutut")
           // console.log(data);
-          $('#holder2').html("");
+          $('#holder').html("");
           var elements = '';
 
           for (var i = 0; i < data.length; i++) {
@@ -520,7 +523,7 @@ function myFunc() {
 
           }
 
-          $('#holder2').append(elements);
+          $('#holder9').append(elements);
 
         })
     }
