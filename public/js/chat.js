@@ -263,6 +263,7 @@ function myFunc() {
       document.getElementById("holder4").style.display = "None";
       document.getElementById("holder7").style.display = "None";
       document.getElementById("holder8").style.display = "None";
+      document.getElementById("holder9").style.display = "None";
 
       $('#menu_active').text('Messages');
       var e = document.getElementById("category_click");
@@ -270,6 +271,8 @@ function myFunc() {
       e = document.getElementById("private_click");
       e.classList.add("active-tab");
       e = document.getElementById("group_click");
+      e.classList.remove("active-tab");
+      e = document.getElementById("latest_click");
       e.classList.remove("active-tab");
 
       var my_div = $("#holder2");
@@ -366,6 +369,8 @@ function myFunc() {
       e.classList.remove("active-tab");
       e = document.getElementById("group_click");
       e.classList.add("active-tab");
+      e = document.getElementById("latest_click");
+      e.classList.add("active-tab");
       var username = $('#curr_user').attr('name');
       document.getElementById("holder6").style.display = "None";
       document.getElementById("holder4").style.display = "Block";
@@ -373,6 +378,7 @@ function myFunc() {
       document.getElementById("holder5").style.display = "None";
       document.getElementById("holder7").style.display = "None";
       document.getElementById("holder8").style.display = "None";
+      document.getElementById("holder9").style.display = "None";
 
       if (menuContent.style.display == "block") {
         menuContent.style.display = "";
@@ -409,6 +415,8 @@ function myFunc() {
       e.classList.remove("active-tab");
       e = document.getElementById("group_click");
       e.classList.remove("active-tab");
+      e = document.getElementById("latest_click");
+      e.classList.remove("active-tab");
       var username = $('#curr_user').attr('name');
       document.getElementById("holder6").style.display = "Block";
       document.getElementById("holder4").style.display = "None";
@@ -416,6 +424,7 @@ function myFunc() {
       document.getElementById("holder5").style.display = "None";
       document.getElementById("holder7").style.display = "None";
       document.getElementById("holder8").style.display = "None";
+      document.getElementById("holder9").style.display = "None";
 
       if (menuContent.style.display == "block") {
         menuContent.style.display = "";
