@@ -743,7 +743,12 @@ input[type="text"]:focus {
   .contacts li.active,
   .contacts.info li.active {
     background: none;
-    border-bottom-color: rgba(205, 211, 237, 0.75);
+/*    border-bottom-color: rgba(205, 211, 237, 0.75);*/
+    background-color: #323232;
+    color: #fff !important;
+  }
+  .contacts li.active .message-time{
+    color: #fff;
   }
 }
 
