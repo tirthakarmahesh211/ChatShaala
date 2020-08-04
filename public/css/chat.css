@@ -239,7 +239,7 @@ body {
 .contacts-list {
   position: fixed;
   background-color: #fff;
-  border-right: 1px solid #cfdbe2;
+  border-right: 2px solid var(--mainColor);
   /*width: 325px;*/
   width: 25%;
   height: 100%;
@@ -806,7 +806,7 @@ input[type="text"]:focus {
 .contacts li .contacts-add .fa-trash-o {
   position: absolute;
   font-size: 14px;
-  right: 28px;
+  right: 33px;
   bottom: 4px;
   color: #a6a6a6;
   cursor: pointer;
@@ -923,8 +923,8 @@ input[type="text"]:focus {
   left: 5px;*/
   top:38px;
   right:0px;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 24px;
   line-height: 22px;
   text-align: center;
   background-color: var(--mainColor);
@@ -942,7 +942,7 @@ input[type="text"]:focus {
  .contacts li .message-count {
   top:33px;
   right:1px;
-  width: 23px;
+  width: 25px;
   height: 23px;
   line-height: 22px;
   text-align: center;
@@ -950,7 +950,7 @@ input[type="text"]:focus {
   border-radius: 50%;
   color: #FFF;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 9px;
   align-items: center;
   align-content: center;
   text-align: center;
