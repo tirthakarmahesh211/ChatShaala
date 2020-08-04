@@ -605,6 +605,7 @@ function myFunc() {
       document.getElementById("holder4").style.display = "None";
       document.getElementById("holder7").style.display = "None";
       document.getElementById("holder8").style.display = "None";
+      document.getElementById("holder9").style.display = "None";
       var my_div = $("#holder5");
       var l = 1;
 
