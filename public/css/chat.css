@@ -1705,9 +1705,9 @@ pre {
   text-align: justify;
 }
 
-span {
+/*span {
   display: none;
-}
+}*/
 
 .closes {
   display: block;
