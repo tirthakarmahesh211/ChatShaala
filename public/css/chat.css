@@ -1791,6 +1791,21 @@ textarea[name="desc"] {
   font-size: 34px;
   margin-top: 2px;
 }
+.new-topic-msg{
+
+}
+
+@media only screen and (max-width: 600px) {
+  #back_ {
+    display: block;
+    /*font-size: 0.9em;*/
+    font-size: 34px;
+    margin-top: 2px;
+  }
+  .new-topic-msg{
+    display:none;
+  }
+}
 
 #on_but {
   margin-top: 10px;
