@@ -956,7 +956,14 @@ function myFunc() {
             let edit_button = '<div class="edit_btn" id="edit_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" data-post_id="'+ data[i].id +'" title="edit this post" onclick="edit_function(this)"><i class="fa fa-pencil" aria-hidden="true"></i></div>'
             let setting_button = '<div class="setting_btn" id="setting_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" data-post_id="'+ data[i].id +'" title="" onclick="setting_function(this)"><i class="fa fa-external-link"></i></div>'
             let in_reply_to = "";
-            if(data[i].reply_to_user && data[i].reply_to_user.username){
+            let indexOfPreviousPost = array_to_store_post_number.indexOf(data[i].post_number);
+            let indexOfNextPost = array_to_store_post_number.indexOf(data[i].reply_to_post_number);
+            var difference = indexOfPreviousPost - indexOfNextPost;
+            let indexOfPost = 0;
+            if(data[i].reply_to_post_number!= null && data[i].post_number != data[i].reply_to_post_number && difference!=1){
+              indexOfPost = array_to_store_post_number.indexOf(data[i].reply_to_post_number);
+            }
+            if(data[i].reply_to_user && data[i].reply_to_user.username && indexOfPost && indexOfPost > 0){
              in_reply_to = '<a id="InReplyTo_' + data[i].topic_id + '_' + data[i].post_number+ '_' + posts_count+ '_' + page_number+'" data-post_id="'+ data[i].id +'" onclick="get_specific_post_replies(this)"> In Reply To '+ data[i].reply_to_user.username +'</a>';
             }
             if (data[i].username != username) {//for receive
@@ -1612,12 +1619,12 @@ function hide_or_show(){
 }
 
 function get_specific_post_replies(selected_element){
-  console.log(selected_element.id);
+  // console.log(selected_element.id);
   // alert("get_specific_post_replies");
   // let post_id = selected_element.id.split("_")[3];
   var msg_id = "msg"+selected_element.id.split("InReplyTo")[1];
   // console.log(document.getElementById(msg_id));
-  console.log(msg_id);
+  // console.log(msg_id);
   var class_toggle = "info";
   var temp = false;
   var topic_id = msg_id.split("_")[1];
@@ -1634,8 +1641,8 @@ function get_specific_post_replies(selected_element){
       type: 'GET'
     })
     .done(function (data) {
-      console.log(data);
-      console.log(msg_id);
+      // console.log(data);
+      // console.log(msg_id);
       // $("#"+msg_id).prepend();
       var username = $('#curr_user').attr('name');
       var elements = '';
