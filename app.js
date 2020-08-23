@@ -1130,3 +1130,7 @@ app.get('/uploads/default/*', function (req, res) {
 app.get('/user_avatar/*', function (req, res) {
   res.redirect(secrets.url+"user_avatar/"+req.params[0]);
 });
+
+app.get('/images/emoji/*', function (req, res) {
+  res.redirect(secrets.url+"images/emoji/"+req.params[0]);
+});
