@@ -8,6 +8,29 @@ dropdownBtn.addEventListener('click', () => {
     menuContent.style.display = "none";
   }
 });
+window.onpaint = preloadFunc();
+
+function preloadFunc(){
+  let username = document.getElementById("curr_user").getAttribute("name");
+  let curr_user_id = document.getElementById("curr_user_id").getAttribute("name");
+  document.getElementById("plus_btn").style.display = "none";
+  if( (username == "system" || username != "") && curr_user_id != ""){
+    document.getElementById("plus_btn").style.display = "block";
+    // document.getElementById("logout_link").style.display = "block";
+    // document.getElementById("login_link").style.display = "none";
+    document.getElementById("saveDelta").style.display = "block";
+    document.getElementById("upload_files").style.display = "block";
+  }
+  else{
+    document.getElementById("plus_btn").style.display = "none";
+    // document.getElementById("logout_link").style.display = "none";
+    // document.getElementById("login_link").style.display = "block";
+    document.getElementById("saveDelta").style.display = "none";
+    document.getElementById("upload_files").style.display = "none";
+    document.getElementById("replyMessage").placeholder = "Please Login to join the conversation"
+  } 
+}
+
 //Loading categories on page Load
 window.onload = function () {
   var page_url = document.getElementById("page_url");
@@ -49,6 +72,12 @@ window.onload = function () {
       document.getElementById("load_next_posts").style.display = "block";
     }
   }
+  document.getElementById("upload_paperclip_icon").addEventListener("click", function(){
+    alert("Please Login to upload files");
+  });
+  document.getElementById("paper_plane_icon").addEventListener("click", function(){
+    alert("Please Login to join the conversation");
+  });
 };
 //Modal functioning
 // Get the modal
@@ -758,7 +787,11 @@ function myFunc() {
         document.getElementById("inbox").style.display = "block";
         document.getElementById("inbox-message-1").style.display = "block";
         document.getElementById("back_").style.display = "none";
-        document.getElementById('plus_btn').style.display = "block";
+        let username = document.getElementById("curr_user").getAttribute("name");
+        let curr_user_id = document.getElementById("curr_user_id").getAttribute("name");
+        if( (username == "system" || username != "") && curr_user_id != ""){
+          document.getElementById('plus_btn').style.display = "block";
+        }
         if(document.getElementById('plus_btn').style.borderRadius == "0%"){
           document.getElementById('create-topic').style.display = "block";
           document.getElementById('create-message').style.display = "block";
@@ -775,7 +808,11 @@ function myFunc() {
         //alert("hi");
         document.getElementById("inbox").style.display = "block";
         document.getElementById("inbox-message-1").style.display = "none";
-        document.getElementById('plus_btn').style.display = "block";
+        let username = document.getElementById("curr_user").getAttribute("name");
+        let curr_user_id = document.getElementById("curr_user_id").getAttribute("name");
+        if( (username == "system" || username != "") && curr_user_id != ""){
+          document.getElementById('plus_btn').style.display = "block";
+        }
         if(document.getElementById('plus_btn').style.borderRadius == "0%"){
           document.getElementById('create-topic').style.display = "block";
           document.getElementById('create-message').style.display = "block";
