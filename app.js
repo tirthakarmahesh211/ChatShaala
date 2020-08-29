@@ -500,11 +500,8 @@ app.get("/post/:url1/:url2/:url3/:url4", function (req, res) {
 
 
 app.get("/post/more/:url1/:url2?/:url3?/:url4?", function (req, res) {
-  // console.log(req.params.url1);
-  // console.log(req.params.url2);
-  // console.log(req.params.url3);
-  // console.log(req.params.url4);
-  let curr_user = req.session.user;
+  // console.log("post more get method");
+  let curr_user = (req && req.session && req.session.user)? req.session.user: {username:'system'};
 
   if (req.params && req.params.url4 == "1"){
     req.params.url4="99999"
@@ -529,7 +526,7 @@ app.get("/post/more/:url1/:url2?/:url3?/:url4?", function (req, res) {
     method: 'GET',
     headers: {
       'Api-Key': secrets.key,
-      'Api-Username': req.session.user.username
+      'Api-Username': curr_user.username
     }
   };
   https.get(url, options, function (response) {
