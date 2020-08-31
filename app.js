@@ -63,7 +63,7 @@ app.get('/*', function (req, res, next) {
 });
 
 //Routing
-app.get('/register', function (req, res) {
+app.get('/login', function (req, res) {
   let user = req.session.user;
   if (user) {
     res.redirect('/');
@@ -440,15 +440,15 @@ app.get("/badges", function (req, res) {
 
 
 app.get('/logout', function (req, res) {
-  console.log("log out");
+  // console.log("log out");
   let user = req.session.user;
   if (user) {
     req.session.cookie.maxAge = -1;
     req.session.destroy();
     req.session = null;
-    res.redirect('/register');
+    res.redirect('/login');
   }else{
-      res.redirect('/register');
+      res.redirect('/login');
   }
 });
 

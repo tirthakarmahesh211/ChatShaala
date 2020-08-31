@@ -23,6 +23,7 @@ function preloadFunc(){
   }
   else{
     document.getElementById("plus_btn").style.display = "none";
+    document.getElementById("private_click").style.display = "none";
     // document.getElementById("logout_link").style.display = "none";
     // document.getElementById("login_link").style.display = "block";
     document.getElementById("saveDelta").style.display = "none";
