@@ -1411,7 +1411,7 @@ function myFunc() {
                   var logo;
                   logo="/images/icons/noun_Subcategory_929019.png";
                   // console.log(data.topic_list);
-                  if(data && data.topic_list.topics && data.topic_list.topics.length > 0){
+                  if(data && data.topic_list && data.topic_list.topics && data.topic_list.topics.length > 0){
                     title = data.topic_list.topics[0].title.substring(10,data.topic_list.topics[0].title.length-9);
                     // title = ""
                     // url = "c/14/21/0";

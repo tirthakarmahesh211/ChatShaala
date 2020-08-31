@@ -884,7 +884,7 @@ app.get("/user/common/:uname", function (req, res) {
     method: 'GET',
     headers: {
       'Api-Key': secrets.key,
-      'Api-Username': 'system'
+      'Api-Username': (curr_user)?curr_user.username: secrets.USERNAME,
     }
   };
   https.get(url1, options, (response) => {
