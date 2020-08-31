@@ -64,6 +64,7 @@ app.get('/*', function (req, res, next) {
 
 //Routing
 app.get('/login', function (req, res) {
+  res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
   let user = req.session.user;
   if (user) {
     res.redirect('/');
@@ -75,6 +76,7 @@ app.get('/login', function (req, res) {
 });
 
 app.post('/register', function (req, res) {
+  res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
   let user = req.session.user;
   if (user) {
     res.redirect(home1);
