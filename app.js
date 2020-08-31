@@ -327,7 +327,7 @@ app.get("/latest", function(req, res){
     method: 'GET',
     headers: {
       'Api-Key': secrets.key,
-      'Api-Username': (req.session.user)?req.session.user.username:'system'
+      'Api-Username': (req.session.user)?req.session.user.username: secrets.USERNAME
     }
   };
   https.get(url,options, function(response){
