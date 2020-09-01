@@ -997,7 +997,7 @@ function myFunc() {
             let indexOfPreviousPost = array_to_store_post_number.indexOf(data[i].post_number);
             let indexOfNextPost = array_to_store_post_number.indexOf(data[i].reply_to_post_number);
             var difference = indexOfPreviousPost - indexOfNextPost;
-            let ReplyBtn = (username!="system" && username!="" && username!=null && username!=undefined)?ReplyBtn:'';
+            let ReplyBtn = (username!="system" && username!="" && username!=null && username!=undefined)?'<i id="reply_btn_'+ data[i].topic_id + '_' + data[i].post_number +'" type="button" title="'+ data[i].cooked.replace(/<[^>]+>/g, '') +'" class="fa fa-reply reply_function"></i>':'';
             let indexOfPost = 0;
             if(data[i].reply_to_post_number!= null && data[i].post_number != data[i].reply_to_post_number && difference!=1){
               indexOfPost = array_to_store_post_number.indexOf(data[i].reply_to_post_number);
