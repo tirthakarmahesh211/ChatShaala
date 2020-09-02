@@ -35,11 +35,11 @@
     <div id="mySidebar" class="sidebar">
 
       <a href="/">Home</a>
+      <a id="login_link" href="/login">Login</a>
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">✖</a>
-
+      <a href="#" onclick="open_page()">About</a>
+      <%if (false) {%> 
       <a href='<%=about%>'>About</a>
-      
-      <%if (false) {%>
       <a href='<%=home%>'>Chat</a>
       <a href='<%=blog%>'>Blogs</a>
       <a href='<%=project%>'>Projects</a>
@@ -48,7 +48,7 @@
       <%}%>
       <a href='<%=profile%>'>Profile</a>
 
-      <a href="<%=logout%>">Logout</a>
+      <a id="logout_link" style="display: none;" onclick="logout(this)">Logout</a>
 
     </div>
 
@@ -325,14 +325,14 @@
           <div class="editor_widget">
             <div class="im_attach pull-left">
               <input id="upload_files" type="file" multiple="multiple" title="Send file" class="im_attach_input">
-              <i class="fa fa-paperclip fa-2x" aria-hidden="true"></i>
+              <i id="upload_paperclip_icon" class="fa fa-paperclip fa-2x" aria-hidden="true"></i>
             </div>
 
             <textarea id="replyMessage" class="composer_rich_textarea" name="replyMessage" placeholder="Join the conversation..." ></textarea>
 
             <div class="im_attach pull-right">
               <button id="saveDelta" class="save_btn" type="button" title="Submit"></button>
-              <i class="fa fa-paper-plane fa-2x" aria-hidden="true"></i>
+              <i id="paper_plane_icon" class="fa fa-paper-plane fa-2x" aria-hidden="true"></i>
             </div>
           </div>
 
@@ -815,6 +815,7 @@
               body.value='';
               // reply_message[0].innerHTML='';
               $('.selected_msg').empty();
+              $('.selected_msg').removeAttr("id");
               $(".display_replies").css('opacity', "0.01");
               $(".display_replies").css('height', "10px");
               // console.log(document.getElementById("topic_head"));
@@ -1115,6 +1116,20 @@
 
       });
 
+      function logout(clicked_element_data){
+      // console.log(clicked_element_data);
+      let url = "/logout";
+          $.ajax(url,{
+            type:'GET',
+            success:function (data,status,xhr) { 
+              // console.log(window.location.href);
+              clicked_element_data.style.display="none";
+              document.getElementById("login_link").style.display = "block";
+              window.location.href ="/login"
+            }
+          });
+
+      }
 
   </script>
 

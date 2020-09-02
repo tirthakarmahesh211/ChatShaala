@@ -125,7 +125,7 @@ function verifyUser(req, res, userName, password) {
     method: 'POST',
     headers: {
       'Api-Key': secrets.key,
-      'Api-Username': 'system'
+      'Api-Username': secrets.USERNAME
     }
   };
 
@@ -200,7 +200,7 @@ function fetchGroups(req, res, home, about, blog, project, feedback, logout, pro
     method: 'GET',
     headers: {
       'Api-Key': secrets.key,
-      'Api-Username': 'system'
+      'Api-Username': secrets.USERNAME
     }
   };
   https.get(secrets.url + '/latest.json', options, (response) => {
