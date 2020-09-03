@@ -2684,3 +2684,7 @@ blockquote{
 span.bbcode-u{
   text-decoration: underline;
 }
+
+a{
+  cursor: pointer !important;
+}
