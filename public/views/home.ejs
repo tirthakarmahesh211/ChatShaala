@@ -11,9 +11,9 @@
   <link rel="stylesheet" href="/css/quill.css">
   <link href="/css/bootstrap.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/chat.css">
-  <script async = "true"
+<!--   <script async = "true"
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=AM_CHTML-full">
-  </script>
+  </script> -->
 </head>
 
 <body>
@@ -37,6 +37,8 @@
       <a href="/">Home</a>
       <a id="login_link" href="/login">Login</a>
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">✖</a>
+      <a onClick='function_category()'>Groups</a>
+      <a onClick='function_category_common()'>Categories</a>
       <a href="#" onclick="open_page()">About</a>
       <%if (false) {%> 
       <a href='<%=about%>'>About</a>
@@ -171,7 +173,7 @@
 
       <div class="tab-content">
         <%if(page_url != "topic"){%>
-        <div id="right_panel_msg" class="centered_text">Please select a chat to start messaging</div>
+        <div id="right_panel_msg" class="centered_text">Please Login to start messaging <a id="login_link" href="/login"><u>Login</u></a> </div>
         <%}%>
         <div class="tab-pane message-body" id="inbox-message-1">
           <div class="message-top">
@@ -372,7 +374,7 @@
     </div>
 
   </div>
-  <div>
+  <div class="new-topic-msg">
   <button aria-label="New Topic" id="plus_btn" class="btn-default" type="button">
     <i class="fa fa-plus" aria-hidden="true"></i>
     <!-- <span class="btn_text">Create a Topic/Send a Private Message</span> -->
@@ -1132,6 +1134,35 @@
       }
 
   </script>
+
+  <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  // Autonumbering by mathjax
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>  
 </body>
 
 </html>

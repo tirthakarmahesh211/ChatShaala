@@ -457,7 +457,7 @@ function myFunc() {
 
           $('#holder4').html(elements);
         });
-
+          closeNav();
 
     }
     function function_category_common(value=null) {
@@ -524,6 +524,7 @@ function myFunc() {
 
           $('#holder6').html(elements);
         });
+          closeNav();
     }
 
     function function_latestposts(){

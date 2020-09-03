@@ -1707,8 +1707,10 @@ pre {
 
 /*span {
   display: none;
-}
-*/
+
+}*/
+
+
 .closes {
   display: block;
 }
@@ -1790,6 +1792,21 @@ textarea[name="desc"] {
   /*font-size: 0.9em;*/
   font-size: 34px;
   margin-top: 2px;
+}
+.new-topic-msg{
+  
+}
+
+@media only screen and (max-width: 600px) {
+  #back_ {
+    display: block;
+    /*font-size: 0.9em;*/
+    font-size: 34px;
+    margin-top: 2px;
+  }
+ /* .new-topic-msg{
+    display:none;
+  }*/
 }
 
 #on_but {
@@ -2666,4 +2683,8 @@ blockquote{
 
 span.bbcode-u{
   text-decoration: underline;
+}
+
+a{
+  cursor: pointer !important;
 }
