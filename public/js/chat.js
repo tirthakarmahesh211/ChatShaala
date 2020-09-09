@@ -20,6 +20,8 @@ function preloadFunc(){
     document.getElementById("login_link").style.display = "none";
     document.getElementById("saveDelta").style.display = "block";
     document.getElementById("upload_files").style.display = "block";
+    document.getElementById("right_panel_msg").style.display = "none";
+    document.getElementById("right_panel_msg").style.display = "none";
   }
   else{
     document.getElementById("plus_btn").style.display = "none";
@@ -28,6 +30,8 @@ function preloadFunc(){
     document.getElementById("login_link").style.display = "block";
     document.getElementById("saveDelta").style.display = "none";
     document.getElementById("upload_files").style.display = "none";
+    document.getElementById("right_panel_msg").style.display = "none";
+    document.getElementById("right_panel_msg").style.display = "block";
     document.getElementById("replyMessage").placeholder = "Please Login to join the conversation"
   } 
 }
@@ -416,7 +420,7 @@ function myFunc() {
 
     }
     function function_category() {
-      $("#right_panel_msg").css("display","block");
+      // $("#right_panel_msg").css("display","block");
       // window.history.replaceState("object or string", '' , '/');
       document.getElementById("inbox-message-1").style.display = "None";
       $('#menu_active').text('Groups');
@@ -464,7 +468,7 @@ function myFunc() {
       console.log(value);
       var username = $('#curr_user').attr('name');
       if(value !=true){
-      $("#right_panel_msg").css("display","block");
+      // $("#right_panel_msg").css("display","block");
       // window.history.replaceState("object or string", '' , '/');
       document.getElementById("inbox-message-1").style.display = "None";
       $('#menu_active').text('Categories');
@@ -529,7 +533,8 @@ function myFunc() {
 
     function function_latestposts(){
       // alert("latest");
-      $("#right_panel_msg").css("display","block");
+      // $("#right_panel_msg").css("display","block");
+
       // window.history.replaceState("object or string", '' , '/');
       document.getElementById("inbox-message-1").style.display = "None";
       if (menuContent.style.display == "block") {
