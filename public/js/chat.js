@@ -20,8 +20,8 @@ function preloadFunc(){
     document.getElementById("login_link").style.display = "none";
     document.getElementById("saveDelta").style.display = "block";
     document.getElementById("upload_files").style.display = "block";
-    document.getElementById("right_panel_msg").style.display = "block";
-    document.getElementById("right_panel_msg").innerHTML='Please to start messaging'
+    // document.getElementById("right_panel_msg").style.display = "none";
+    document.getElementById("right_panel_msg").innerHTML = "Please select a chat to start messaging";
   }
   else{
     document.getElementById("plus_btn").style.display = "none";
