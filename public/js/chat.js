@@ -31,6 +31,7 @@ function preloadFunc(){
     document.getElementById("saveDelta").style.display = "none";
     document.getElementById("upload_files").style.display = "none";
     document.getElementById("right_panel_msg").style.display = "block";
+    document.getElementById("right_panel_msg").innerHTML='Please <a id="login_link" href="/login"><u>Login</u></a> to start messaging'
     document.getElementById("replyMessage").placeholder = "Please Login to join the conversation"
   } 
 }
