@@ -1202,7 +1202,7 @@ input[type="text"]:focus {
 
 .message .message-info {
   width: 100%;
-  height: 22px;
+  height: 40px;
   color:#6b6d6e;
   padding: 2px 6px;
 }
@@ -2687,4 +2687,11 @@ span.bbcode-u{
 
 a{
   cursor: pointer !important;
+}
+
+.post_icon{
+  height: 50px;
+  width: 50px;
+  margin-left: 5px;
+  margin-right: 5px;
 }

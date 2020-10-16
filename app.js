@@ -538,19 +538,38 @@ app.get("/post/more/:url1/:url2?/:url3?/:url4?", function (req, res) {
     });
     response.on('end', function () {
       body = JSON.parse(body);
-      res.json(body);
-      // if (body && body.post_stream && body.post_stream.posts) {
-      //   // for (var i = 0; i < body.post_stream.posts.length; i++) {
-      //   //   //console.log(body.post_stream.posts[i].post_number);
-      //   // }
-      //   res.json(body);
-      // } else {
-      //   res.json([]);
-      // }
+      // res.json(body);
 
+      if(body && body.post_stream && body.post_stream.stream){
+        var post_ids = body.post_stream.stream.toString();
+        body.post_ids = post_ids;
+      }
 
-      // console.log(groups);
-      // console.log(body.post_stream.posts);
+      var badges_info="";
+      // console.log(post_ids);
+      var url2 = secrets.url + 'ratings/badges_info/'+post_ids;
+      var options = {
+        method: 'GET',
+        headers: {
+          'Api-Key': secrets.key,
+          'Api-Username': 'system'
+        }
+      };
+      https.get(url2, options, function (response) {
+        response.on('data', function (data) {
+          badges_info += data;
+        });
+        response.on('end', function () {
+          // console.log(badges_info);
+          badges_info = JSON.parse(badges_info);
+          // res.json(body3);
+          body.badges_info = badges_info;
+          console.log(body.badges_info)
+          res.json(body);
+        });
+        //console.log(body3);
+
+      });
 
 
     });
@@ -1134,4 +1153,31 @@ app.get('/user_avatar/*', function (req, res) {
 
 app.get('/images/emoji/*', function (req, res) {
   res.redirect(secrets.url+"images/emoji/"+req.params[0]);
+});
+
+app.get('/badges/:post_ids', function(req,res){
+  let curr_user = (req && req.session && req.session.user)? req.session.user: {username:'system'};
+  var post_id = req.params.post_id;
+  var body = '';
+  var url = secrets.url+"/ratings/badges_info/"+post_ids;
+
+  var options = {
+    method: 'GET',
+    headers: {
+      'Api-Key': secrets.key,
+      'Api-Username': curr_user.username
+    }
+  };
+  https.get(url, options, function (response) {
+    response.on('data', function (data) {
+      body += data;
+    });
+    response.on('end', function () {
+        try {
+          body = JSON.parse(body);
+        } catch (ex) {
+        }
+        res.send(body);
+    });
+  });
 });

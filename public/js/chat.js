@@ -923,6 +923,7 @@ function myFunc() {
       })
         .done(function (data) {
           // console.log("aaaaaaaaaaaaaaaaa");
+          var badges_info = data.badges_info;
           var posts_count = data.posts_count;
           var slug = data.slug;
           var type_of_msg = data.archetype;
@@ -988,7 +989,7 @@ function myFunc() {
                   like_button = '';
               }
             }
-            let User_Name = (data[i].username == null) ? data[i].name : '<a class="usr_profile" href="/u/'+data[i].username+'">'+data[i].username+'</a>'
+            let User_Name = (data[i].username == null) ? data[i].name : '<a class="usr_profile" href="/u/'+data[i].username+'">'+data[i].username+'</a>'+getbadgeIcons(badges_info[data[i].id]);
             // console.log(type_of_msg);
 
             let chk_pvt_or_regular_msg = (type_of_msg == "regular") ? true : false;
@@ -1847,3 +1848,18 @@ function open_page(){
   document.getElementById("mySidebar").style.width = "0";
 }
 
+function getbadgeIcons(data){
+  // console.log(data);
+  if(data != undefined){
+    var objectLengh = Object.keys(data).length;
+    // console.log(objectLengh);
+    var badgeIcons='';
+    for (let i = 0; i < objectLengh; i++) {
+      console.log(data[i+1].image);
+      badgeIcons = badgeIcons + "<img class='post_icon' src='"+ (data[i+1].image) +"' title='"+ data[i+1].name +"'>";
+    }
+    return badgeIcons;
+  }
+
+  return "";
+}
