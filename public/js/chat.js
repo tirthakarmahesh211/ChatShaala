@@ -989,7 +989,7 @@ function myFunc() {
                   like_button = '';
               }
             }
-            let User_Name = (data[i].username == null) ? data[i].name : '<a class="usr_profile" href="/u/'+data[i].username+'">'+data[i].username+'</a>'+getbadgeIcons(badges_info[data[i].id]);
+            let User_Name = (data[i].username == null) ? data[i].name : '<a class="usr_profile" href="/u/'+data[i].username+'">'+data[i].username+'</a>'+ ( (badges_info!=undefined && badges_info !=null) ? getbadgeIcons(badges_info[data[i].id]) : "" );
             // console.log(type_of_msg);
 
             let chk_pvt_or_regular_msg = (type_of_msg == "regular") ? true : false;
