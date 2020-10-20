@@ -1205,6 +1205,7 @@ input[type="text"]:focus {
   height: 40px;
   color:#6b6d6e;
   padding: 2px 6px;
+  background-color: #D5E0E9;
 }
 
 .message .message-info>h5>i {
@@ -2690,8 +2691,11 @@ a{
 }
 
 .post_icon{
-  height: 50px;
-  width: 50px;
-  margin-left: 5px;
+  height: 38px;
+  width: 38px;
+  margin-left: 10px;
   margin-right: 5px;
+}
+.post_icon:hover{
+        transform: scale(1.5); 
 }
