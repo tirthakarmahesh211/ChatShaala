@@ -1205,7 +1205,7 @@ input[type="text"]:focus {
   height: 40px;
   color:#6b6d6e;
   padding: 2px 6px;
-  background-color: #D5E0E9;
+  background-color: #274B6B;
 }
 
 .message .message-info>h5>i {
@@ -1986,7 +1986,7 @@ svg {
   font-weight: normal;
   float: right;
   padding-right: 10px;
-  color: #444;
+  color: #fff;
 }
 .like_div{
   display: inline-block;
@@ -2582,6 +2582,7 @@ div.reply_msg{
 
 .message-info a {
   cursor: pointer !important;
+  color: #fff;
 }
 
 blockquote{
@@ -2697,5 +2698,5 @@ a{
   margin-right: 5px;
 }
 .post_icon:hover{
-        transform: scale(1.5); 
+        transform: scale(1.4); 
 }
