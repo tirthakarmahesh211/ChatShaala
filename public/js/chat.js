@@ -1879,37 +1879,45 @@ $(function(){
         } else if (document.selection) {
           selection = document.selection.createRange();
         }
-        console.log(e);
-        console.log(e.clientY);
-        console.log(selection);
+        // console.log(e);
+        // console.log(e.clientY);
+        // console.log(selection);
         // selection.toString() !== '' && alert( selection.toString() );
         var quoteButton = document.createElement("BUTTON");
-        console.log(quoteButton);
+        // console.log(quoteButton);
         var quoteBtn = document.getElementById("quoteButton");
-        console.log(quoteBtn);
+        // console.log(quoteBtn);
         if(selection.toString() !== ''){
         if(quoteBtn == undefined || quoteBtn == null){
           quoteButton.id="quoteButton";
           quoteButton.innerHTML=" Quote ";
-          quoteButton.style.background = "red";
+          quoteButton.style.background = "grey";
           quoteButton.style.zIndex = "100000";
           quoteButton.style.position = "absolute";
           quoteButton.style.left = cursorX+"px";
           quoteButton.style.top = cursorY+"px";
+          quoteButton.style.border = "none";
+          quoteButton.style.color = "white";
+          quoteButton.style.padding = "8px 10px";
+          quoteButton.style.fontSize="16px"
           document.body.appendChild(quoteButton);
         }
         else{
-          console.log("else .....");
+          // console.log("else .....");
           // console.log(e);
-          console.log(e.clientX);
-          console.log(e.clientY);
+          // console.log(e.clientX);
+          // console.log(e.clientY);
           quoteBtn.id="quoteButton";
           quoteBtn.innerHTML=" Quote ";
-          quoteBtn.style.background="yellow";
+          quoteBtn.style.background="grey";
           quoteBtn.style.zIndex = "100000";
           quoteBtn.style.position = "absolute";
           quoteBtn.style.left = cursorX+"px";
           quoteBtn.style.top = cursorY+"px";
+          quoteBtn.style.border = "none";
+          quoteBtn.style.color = "white";
+          quoteBtn.style.padding = "8px 10px";
+          quoteBtn.style.fontSize="16px"
           // document.body.appendChild(quoteBtn);
         }
         }
