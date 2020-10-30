@@ -1863,3 +1863,60 @@ function getbadgeIcons(data){
 
   return "";
 }
+
+var cursorX;
+var cursorY;
+document.onmousemove = function(e){
+    cursorX = e.pageX;
+    cursorY = e.pageY;
+}
+
+$(function(){
+    $(document).bind('selectionchange', function(e){
+        var selection;
+        if (window.getSelection) {
+          selection = window.getSelection();
+        } else if (document.selection) {
+          selection = document.selection.createRange();
+        }
+        console.log(e);
+        console.log(e.clientY);
+        console.log(selection);
+        // selection.toString() !== '' && alert( selection.toString() );
+        var quoteButton = document.createElement("BUTTON");
+        console.log(quoteButton);
+        var quoteBtn = document.getElementById("quoteButton");
+        console.log(quoteBtn);
+        if(selection.toString() !== ''){
+        if(quoteBtn == undefined || quoteBtn == null){
+          quoteButton.id="quoteButton";
+          quoteButton.innerHTML=" Quote ";
+          quoteButton.style.background = "red";
+          quoteButton.style.zIndex = "100000";
+          quoteButton.style.position = "absolute";
+          quoteButton.style.left = cursorX+"px";
+          quoteButton.style.top = cursorY+"px";
+          document.body.appendChild(quoteButton);
+        }
+        else{
+          console.log("else .....");
+          // console.log(e);
+          console.log(e.clientX);
+          console.log(e.clientY);
+          quoteBtn.id="quoteButton";
+          quoteBtn.innerHTML=" Quote ";
+          quoteBtn.style.background="yellow";
+          quoteBtn.style.zIndex = "100000";
+          quoteBtn.style.position = "absolute";
+          quoteBtn.style.left = cursorX+"px";
+          quoteBtn.style.top = cursorY+"px";
+          // document.body.appendChild(quoteBtn);
+        }
+        }
+        else{
+          if(quoteBtn!=null){
+            quoteBtn.remove();
+          }
+        }
+    });
+});
