@@ -989,7 +989,7 @@ function upload_file(req, res){
       // console.log("data");
       // console.log(data);
       if(data && data.extension == "png" || data.extension == "jpeg" || data.extension == "jpg" || data.extension == "gif" || data.extension == "svg"){
-        no_tag = "!["+data.original_filename+"|"+data.thumbnail_width+"*"+data.thumbnail_height+"]("+secrets.url+data.url+")"
+        no_tag = "!["+data.original_filename+"|"+data.thumbnail_width+"*"+data.thumbnail_height+"]("+data.url+")"
         res.send(no_tag);
       }
       else if (data.original_filename!=undefined && data.url != undefined) {

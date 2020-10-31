@@ -1899,7 +1899,8 @@ $(function(){
           quoteButton.style.border = "none";
           quoteButton.style.color = "white";
           quoteButton.style.padding = "8px 10px";
-          quoteButton.style.fontSize="16px"
+          quoteButton.style.fontSize="16px";
+          quoteButton.addEventListener("click", quote, false);
           document.body.appendChild(quoteButton);
         }
         else{
@@ -1917,7 +1918,8 @@ $(function(){
           quoteBtn.style.border = "none";
           quoteBtn.style.color = "white";
           quoteBtn.style.padding = "8px 10px";
-          quoteBtn.style.fontSize="16px"
+          quoteBtn.style.fontSize="16px";
+          quoteBtn.addEventListener("click", quote, false);
           // document.body.appendChild(quoteBtn);
         }
         }
@@ -1928,3 +1930,12 @@ $(function(){
         }
     });
 });
+
+function quote(){
+
+  var clicked_element_data;
+
+  
+
+  alert("quote ...")
+}

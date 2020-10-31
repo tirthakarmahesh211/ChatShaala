@@ -971,7 +971,10 @@
                 last_part_string = body.value.substring(body.selectionStart,body.value.length)
               }
               let whole_string = first_part_string +" "+ data +" "+ last_part_string;
-              // console.log(whole_string);
+              console.log(first_part_string);
+              console.log(last_part_string);
+              console.log(data);
+              console.log("whole_string");
               $("#replyMessage").val(whole_string);
             }
          },
