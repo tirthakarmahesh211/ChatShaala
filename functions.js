@@ -877,6 +877,7 @@ function reply_to_specific_pvt_msg(req,res){
   }
 
   function reply(original_raw){
+    var original_raw = original_raw;
     var options = {
       method: "POST",
       headers: {
@@ -908,8 +909,7 @@ function reply_to_specific_pvt_msg(req,res){
     // console.log(options);
     var temp=false;
     var request = https.request(URL, options, (response) => {
-       //  console.log(response.statusMessage);
-       console.log(response.statusCode);
+    // console.log(response.statusCode);
       if (response.statusCode === 200) {
         var body = '';
         response.on('data', (data) => {
@@ -917,24 +917,18 @@ function reply_to_specific_pvt_msg(req,res){
         });
         response.on('end', () => {
           body = JSON.parse(body);
-          temp = true;
+          // temp = true;
           // console.log(body);
           // res.redirect('/post/t/' + body.topic_slug + '/' + body.topic_id +'/'+(Number(reply_to_post_number)+1));
         });
       } else {
-        // res.redirect('/');
-        // res.send("error");
+
       }
     });
-    console.log(temp);
-    if(temp == true){
-      request.write(querystring.stringify(data1));
-      request.end();
-      res.send(original_raw);
-    }
-    else{
-      res.send("Error");
-    }
+    request.write(querystring.stringify(data1));
+    request.end();
+
+    res.send(original_raw);
 
     }
   

@@ -824,7 +824,7 @@
               // setTimeout(()=>{
               //       // $(".chat-body").animate({ scrollTop: $('.chat-body').prop("scrollHeight") }, 500);
               // },500);
-            },1000);
+            },2000);
           },
           error:function(jqXhr, textStatus, errorMessage){alert('Failed to send message '+ errorMessage);}
           });
@@ -861,7 +861,7 @@
                 document.getElementById("inbox-message-1").style.display = "None";
                 $("#topic_head").html("");
                 $("#holder3").html("");
-              },1500);
+              },2000);
            },
             error:function(jqXhr, textStatus, errorMessage){alert('Failed to send message '+ errorMessage);}
           });
@@ -907,6 +907,9 @@
               body:body.value
             },
             success:function (data,status,xhr) {   // success callback function
+              console.log(data);
+              console.log(status);
+              console.log(xhr);
               if (data == "Error"){
                 alert("Something went wrong;");
               }
@@ -924,7 +927,7 @@
                 // setTimeout(()=>{
                 //       $(".chat-body").animate({ scrollTop: $('.chat-body').prop("scrollHeight") }, 500);
                 // },500);
-              },1000);
+              },2000);
               }
            },
             error:function(jqXhr, textStatus, errorMessage){alert('Failed to send message '+ errorMessage);}
