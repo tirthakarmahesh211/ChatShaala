@@ -817,7 +817,6 @@ function reply_to_specific_pvt_msg(req,res){
   var result = raw.match(/<img.*?src="(.*?)"[^\>]*>/gi);
   // console.log(result[0].match(/src="(.*?)"/));
   if(result && result.length>0){
-
     var bas64_encoded = result[0].match(/src="(.*?)"/)[1].replace(reg_for_base64,"");
     var extension = result[0].match(/src="(.*?)"/)[1].match(reg_for_base64);
     // console.log(extension);
@@ -874,12 +873,10 @@ function reply_to_specific_pvt_msg(req,res){
 
   }
   else{
-    // console.log("else -");
     reply(original_raw);
   }
 
   function reply(original_raw){
-    // console.log("reply");
     var options = {
       method: "POST",
       headers: {
@@ -909,10 +906,10 @@ function reply_to_specific_pvt_msg(req,res){
 
     // console.log(data1);
     // console.log(options);
-    
+    var temp=false;
     var request = https.request(URL, options, (response) => {
        //  console.log(response.statusMessage);
-       // console.log(response.statusCode);
+       console.log(response.statusCode);
       if (response.statusCode === 200) {
         var body = '';
         response.on('data', (data) => {
@@ -920,16 +917,25 @@ function reply_to_specific_pvt_msg(req,res){
         });
         response.on('end', () => {
           body = JSON.parse(body);
+          temp = true;
           // console.log(body);
           // res.redirect('/post/t/' + body.topic_slug + '/' + body.topic_id +'/'+(Number(reply_to_post_number)+1));
         });
       } else {
         // res.redirect('/');
+        // res.send("error");
       }
     });
-    request.write(querystring.stringify(data1));
-    request.end();
-    res.send(original_raw);
+    console.log(temp);
+    if(temp == true){
+      request.write(querystring.stringify(data1));
+      request.end();
+      res.send(original_raw);
+    }
+    else{
+      res.send("Error");
+    }
+
     }
   
 }
@@ -1074,7 +1080,7 @@ function get_categories(req, res, home, about, blog, project, feedback, logout, 
   };
 
   https.get(secrets.url+'categories.json',options,(response)=>{
-   console.log(response.statusCode);
+   // console.log(response.statusCode);
     if(response.statusCode===200 || response.statusCode===404){
       var data='';
       response.on('data',(chunk)=>{
@@ -1506,7 +1512,7 @@ function update_posts_raw_by_id(req, res){
   // };
 
   var url = secrets.url + '/posts/'+ req.params.post_id+".json"
-  console.log(url);
+  // console.log(url);
   // var request = https.request(url, options, (response) => {
   //    console.log(response.statusCode);
   //   if (response.statusCode === 200) {

@@ -785,16 +785,11 @@
       // });
       document.getElementById('saveDelta').addEventListener('click', function () {
         var body = document.getElementById('replyMessage');
-        // console.log(body.selectionStart);
         var topic_title = document.getElementById("topic_title");
-        // console.log(topic_title);
         var reply_message = document.getElementsByClassName('selected_msg');
-        // console.log(reply_message[0]);
         var topic_id = $('#tid').attr('name');
         var topic_slug = $('#slug').attr('name');
-        // console.log(reply_message.length);
-        // console.log(reply_message[0].id);
-        // console.log(document.querySelectorAll('div[id^="edit_btn_"][data-edit_btn]')[0].dataset.post_id);
+
         if (reply_message !=null && reply_message !=undefined && reply_message.length > 0 && reply_message[0].id!=null && reply_message[0].id!=undefined && reply_message[0].id!="" && body!=undefined && body.innerHTML!=undefined){
           let fields = reply_message[0].id.split('_');
           topic_id = fields[2];
@@ -912,7 +907,10 @@
               body:body.value
             },
             success:function (data,status,xhr) {   // success callback function
-              // console.log(data);
+              if (data == "Error"){
+                alert("Something went wrong;");
+              }
+              else{
               body.value="";
               body.style.height ="60px";
               setTimeout(function(){
@@ -927,6 +925,7 @@
                 //       $(".chat-body").animate({ scrollTop: $('.chat-body').prop("scrollHeight") }, 500);
                 // },500);
               },1000);
+              }
            },
             error:function(jqXhr, textStatus, errorMessage){alert('Failed to send message '+ errorMessage);}
           });
