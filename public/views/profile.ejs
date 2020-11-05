@@ -22,6 +22,7 @@
 
       <!-- Navigation links (hidden by default) -->
       <div id="myLinks">
+        <%if (false) {%> 
         <a href="/">Home</a>
 
         <a href='<%=about%>'>About</a>
@@ -41,6 +42,7 @@
         <%}%>
             <%if(curr_user_more){%>
         <a href="<%=logout%>">Logout</a>
+        <%}%>
         <%}%>
         </div>
         <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
