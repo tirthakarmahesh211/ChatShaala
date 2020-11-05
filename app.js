@@ -560,7 +560,7 @@ app.get("/post/more/:url1/:url2?/:url3?/:url4?", function (req, res) {
           badges_info += data;
         });
         response.on('end', function () {
-          console.log(badges_info);
+          // console.log(badges_info);
           if(badges_info!=undefined && badges_info!=null && badges_info!=""){
             badges_info = JSON.parse(badges_info);
             body.badges_info = badges_info;
