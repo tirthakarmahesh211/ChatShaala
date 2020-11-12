@@ -1873,6 +1873,15 @@ document.onmousemove = function(e){
 
 $(function(){
     $(document).bind('selectionchange', function(e){
+        let curr_user_id = document.getElementById("curr_user_id");
+        // console.log(curr_user_id);
+        // console.log(curr_user_id.getAttribute("name"));
+        var chk_user_login_or_not = undefined;
+        // console.log(curr_user_id.getAttribute("name").length);
+        if(curr_user_id !=undefined && curr_user_id !=null && curr_user_id!="" && curr_user_id.getAttribute("name").length > 0){
+          chk_user_login_or_not = curr_user_id.getAttribute("name");
+        }
+        // console.log(chk_user_login_or_not);
         var selection;
         if (window.getSelection) {
           selection = window.getSelection();
@@ -1888,7 +1897,7 @@ $(function(){
         var quoteBtn = document.getElementById("quoteButton");
         // console.log(quoteBtn);
         if(selection.toString() !== ''){
-        if(quoteBtn == undefined || quoteBtn == null){
+        if((quoteBtn == undefined || quoteBtn == null) && chk_user_login_or_not!=undefined){
           quoteButton.id="quoteButton";
           quoteButton.innerHTML=" Quote ";
           quoteButton.style.background = "grey";
@@ -1908,18 +1917,20 @@ $(function(){
           // console.log(e);
           // console.log(e.clientX);
           // console.log(e.clientY);
-          quoteBtn.id="quoteButton";
-          quoteBtn.innerHTML=" Quote ";
-          quoteBtn.style.background="grey";
-          quoteBtn.style.zIndex = "100000";
-          quoteBtn.style.position = "absolute";
-          quoteBtn.style.left = cursorX+"px";
-          quoteBtn.style.top = cursorY+"px";
-          quoteBtn.style.border = "none";
-          quoteBtn.style.color = "white";
-          quoteBtn.style.padding = "8px 10px";
-          quoteBtn.style.fontSize="16px";
-          quoteBtn.addEventListener("click", quote, false);
+          if(chk_user_login_or_not!=undefined){
+            quoteBtn.id="quoteButton";
+            quoteBtn.innerHTML=" Quote ";
+            quoteBtn.style.background="grey";
+            quoteBtn.style.zIndex = "100000";
+            quoteBtn.style.position = "absolute";
+            quoteBtn.style.left = cursorX+"px";
+            quoteBtn.style.top = cursorY+"px";
+            quoteBtn.style.border = "none";
+            quoteBtn.style.color = "white";
+            quoteBtn.style.padding = "8px 10px";
+            quoteBtn.style.fontSize="16px";
+            quoteBtn.addEventListener("click", quote, false);
+          }
           // document.body.appendChild(quoteBtn);
         }
         }
