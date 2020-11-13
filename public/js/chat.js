@@ -1932,7 +1932,7 @@ $(function(){
             quoteBtn.style.padding = "8px 10px";
             quoteBtn.style.fontSize="16px";
             quoteBtn.addEventListener("click", function(){
-              quote(selection.toString());
+              quote(selection.toString(),selection);
             }, false);
           }
           // document.body.appendChild(quoteBtn);
@@ -1946,10 +1946,32 @@ $(function(){
     });
 });
 
-function quote(selected_text){
+function quote(selected_text, selected_node){
 
   var clicked_element_data;
 
-  alert(selected_text);
+  // alert(selected_text);
+  // console.log(selected_node);
+  var quote_text = "";
 
+  if(selected_node!=undefined && selected_node!=null && selected_node.anchorNode!=undefined && selected_node.anchorNode!=null && selected_node.anchorNode.parentElement!=undefined && selected_node.anchorNode.parentElement!=null){
+    // console.log(selected_node.anchorNode.parentElement.offsetParent.offsetParent.id.split("_"));
+    let topic_id = selected_node.anchorNode.parentElement.offsetParent.offsetParent.id.split("_")[1];
+    let post_id = selected_node.anchorNode.parentElement.offsetParent.offsetParent.id.split("_")[2];
+
+    quote_text = '[quote="'+document.getElementById("curr_user").getAttribute("name")+', post:'+ post_id +', topic:'+ topic_id +'"]'+ selected_text +'[/quote]  ';
+    // let selected_node.anchorNode.parentElement.offsetParent.offsetParent.id
+    // console.log(quote_text);
+    if(topic_id == undefined || post_id == undefined || topic_id == null || post_id == null){
+      alert("selected text can not be quoted");
+    }
+    else{
+      document.getElementById("replyMessage").innerHTML = quote_text;
+    }
+  }
+  else{
+    if(selected_node!=undefined && selected_node !=null){
+      alert("selected text can not be quoted");
+    }
+  }
 }
