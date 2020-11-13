@@ -1910,7 +1910,7 @@ $(function(){
           quoteButton.style.padding = "8px 10px";
           quoteButton.style.fontSize="16px";
           quoteButton.addEventListener("click", function(){
-              quote(selection.toString());
+              quote(selection.toString(),selection);
           }, false);
           document.body.appendChild(quoteButton);
         }
@@ -1953,9 +1953,11 @@ function quote(selected_text, selected_node){
   // alert(selected_text);
   // console.log(selected_node);
   var quote_text = "";
-
+  // console.log("quote");
+  var replymessage= document.getElementById("replyMessage");
+  replymessage.value = "";
   if(selected_node!=undefined && selected_node!=null && selected_node.anchorNode!=undefined && selected_node.anchorNode!=null && selected_node.anchorNode.parentElement!=undefined && selected_node.anchorNode.parentElement!=null){
-    // console.log(selected_node.anchorNode.parentElement.offsetParent.offsetParent.id.split("_"));
+    // console.log("if block");
     let topic_id = selected_node.anchorNode.parentElement.offsetParent.offsetParent.id.split("_")[1];
     let post_id = selected_node.anchorNode.parentElement.offsetParent.offsetParent.id.split("_")[2];
 
@@ -1966,10 +1968,11 @@ function quote(selected_text, selected_node){
       alert("selected text can not be quoted");
     }
     else{
-      document.getElementById("replyMessage").innerHTML = quote_text;
+      replymessage.value = quote_text;
     }
   }
   else{
+    // console.log("else block");
     if(selected_node!=undefined && selected_node !=null){
       alert("selected text can not be quoted");
     }
