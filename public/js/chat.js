@@ -1961,7 +1961,7 @@ function quote(selected_text, selected_node){
     let topic_id = selected_node.anchorNode.parentElement.offsetParent.offsetParent.id.split("_")[1];
     let post_id = selected_node.anchorNode.parentElement.offsetParent.offsetParent.id.split("_")[2];
 
-    quote_text = '[quote="'+document.getElementById("curr_user").getAttribute("name")+', post:'+ post_id +', topic:'+ topic_id +'"]'+ selected_text +'[/quote]  ';
+    quote_text = '[quote="'+document.getElementById("curr_user").getAttribute("name")+', post:'+ post_id +', topic:'+ topic_id +'"]'+ selected_text +'[/quote] \n ';
     // let selected_node.anchorNode.parentElement.offsetParent.offsetParent.id
     // console.log(quote_text);
     if(topic_id == undefined || post_id == undefined || topic_id == null || post_id == null){
