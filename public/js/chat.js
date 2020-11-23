@@ -1992,7 +1992,7 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
   // console.log(replyMessage);
 
   if(e.keyCode == 50){
-    console.log("if block executed")
+    // console.log("if block executed")
     // alert("@ is pressed");
     // var text = $('input[name="user_grp_search"]').val();
     var user_search_grp = document.getElementById("user_search_grp");
@@ -2010,7 +2010,7 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
     // }    
   }
   else if (e.keyCode == 32){
-    console.log("else if block");
+    // console.log("else if block");
     if( document.getElementById("user_search_grp") != undefined && document.getElementById("user_search_grp") != null && document.getElementById("user_search_grp").getAttribute("name") == "true"){
       document.getElementById("user_search_grp").setAttribute("name","false");
     }
@@ -2020,9 +2020,9 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
 
   if(replyMessage != undefined && replyMessage != null && hidden_div !=undefined && hidden_div!=null && hidden_div.getAttribute("name") == "true" ){
     replyMessage = replyMessage.split("@");
-    console.log(replyMessage.length);
+    // console.log(replyMessage.length);
     let text = replyMessage[replyMessage.length - 1];
-    console.log(text);
+    // console.log(text);
 
     $.ajax({
       url: '/find',
@@ -2032,8 +2032,15 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
         // console.log(data);
         // $('#users1 option').remove();
         $('#user_list').show();
-
         $('#user_list').empty();
+        // console.log($(".editor_widget").position())
+        $("#user_list").css("position","fixed");
+        var cursorPosition = $('#replyMessage').prop("selectionStart");
+        console.log(cursorPosition);
+        console.log($(".editor_widget").position().left);
+        console.log($(".editor_widget").position().top);
+        $('#user_list').css("left",$(".editor_widget").position().left + 100+ cursorPosition);
+        $('#user_list').css("top",$(".editor_widget").position().top+40);
         if(data && data.users){
         for (var i = 0; i < data.users.length; i++) {
           var txt = data.users[i].name + ' (@' + data.users[i].username + ')';

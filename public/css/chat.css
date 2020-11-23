@@ -2704,7 +2704,7 @@ a{
 
 #user_list{
   z-index: 1000001;
-  position: absolute;
-  left: 100px;
-  top: 600px;
+  /*position: absolute;*/
+  /*left: 40%;*/
+  /*top: 600px;*/
 }
