@@ -2701,3 +2701,10 @@ a{
 .post_icon:hover{
         transform: scale(1.4); 
 }
+
+#user_list{
+  z-index: 1000001;
+  position: absolute;
+  left: 100px;
+  top: 600px;
+}

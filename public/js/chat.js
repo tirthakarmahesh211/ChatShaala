@@ -1978,3 +1978,80 @@ function quote(selected_text, selected_node){
     }
   }
 }
+
+document.getElementById("replyMessage").addEventListener('keydown', function(e) {
+  // console.log(e);
+  var replyMessage=undefined;
+  if(e !=undefined && e!=null && e.key !=null && e.key !=undefined && e.keyCode !=undefined && e.keyCode > 64 && e.keyCode < 91){
+    replyMessage = document.getElementById("replyMessage").value+ e.key;
+  }
+  else{
+    replyMessage = document.getElementById("replyMessage").value;
+    replyMessage = replyMessage.substring(0,replyMessage.length-1);
+  }
+  // console.log(replyMessage);
+
+  if(e.keyCode == 50){
+    console.log("if block executed")
+    // alert("@ is pressed");
+    // var text = $('input[name="user_grp_search"]').val();
+    var user_search_grp = document.getElementById("user_search_grp");
+    user_search_grp.setAttribute("name", "true");
+    // console.log(user_search_grp.getAttribute("name"));
+    // console.log(user_search_grp.getAttribute("name"));
+    // var text = replyMessage.split("@");
+    // console.log(text);
+    // console.log(replyMessage);
+    // var splited_text = text.split(",");
+    // var array_length = splited_text.length;
+
+    // if (text && array_length > 1 ){
+    //   text = splited_text[array_length - 1];
+    // }    
+  }
+  else if (e.keyCode == 32){
+    console.log("else if block");
+    if( document.getElementById("user_search_grp") != undefined && document.getElementById("user_search_grp") != null && document.getElementById("user_search_grp").getAttribute("name") == "true"){
+      document.getElementById("user_search_grp").setAttribute("name","false");
+    }
+  }
+
+  var hidden_div = document.getElementById("user_search_grp");
+
+  if(replyMessage != undefined && replyMessage != null && hidden_div !=undefined && hidden_div!=null && hidden_div.getAttribute("name") == "true" ){
+    replyMessage = replyMessage.split("@");
+    console.log(replyMessage.length);
+    let text = replyMessage[replyMessage.length - 1];
+    console.log(text);
+
+    $.ajax({
+      url: '/find',
+      data: { text: text }
+    }).done(
+      (data) => {
+        // console.log(data);
+        // $('#users1 option').remove();
+        $('#user_list').show();
+
+        $('#user_list').empty();
+        if(data && data.users){
+        for (var i = 0; i < data.users.length; i++) {
+          var txt = data.users[i].name + ' (@' + data.users[i].username + ')';
+          // $('#users1').append('<option value=\"' + data.users[i].username + '\">' + txt + '</option>');
+          $('#user_list').append('<option onclick="select_user_or_grp(this)" class="user_grp_info" value=\"' + data.users[i].username +","+ '\">' + txt + '</option>');
+        }          
+        }
+        if(data && data.groups){
+        for (var i = 0; i < data.groups.length; i++) {
+          var txt = data.groups[i].name;
+          // $('#users1').append('<option value=\"' + data.groups[i].name + '\">' + txt + '</option>');
+          $('#user_list').append('<option onclick="select_user_or_grp(this)" class="user_grp_info" value=\"' + data.users[i].username +","+ '\">' + txt + '</option>');
+        }
+        }
+      }
+    );
+
+  }
+
+
+});

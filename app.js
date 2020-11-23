@@ -178,7 +178,7 @@ app.get('/search', (req, res) => {
 });
 app.get('/find', (req, res) => {
   // console.log("find");
-  if (req.session.user) {
+  // if (req.session.user) {
     var text = req.query.text;
     var url = secrets.url + "/u/search/users?term=" + text + "&include_messageable_groups=true";
     // console.log(url);
@@ -215,9 +215,9 @@ app.get('/find', (req, res) => {
     }).on('error', function () {
       console.log('error');
     });
-  } else {
-    res.redirect('/');
-  }
+  // } else {
+  //   res.redirect('/');
+  // }
 });
 
 
