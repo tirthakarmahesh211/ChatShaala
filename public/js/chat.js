@@ -1866,9 +1866,11 @@ function getbadgeIcons(data){
 
 var cursorX;
 var cursorY;
+
 document.onmousemove = function(e){
     cursorX = e.pageX;
     cursorY = e.pageY;
+
 }
 
 $(function(){
@@ -1978,9 +1980,24 @@ function quote(selected_text, selected_node){
     }
   }
 }
+var cursorX1=0;
+var cursorY1=0;
+document.getElementById("replyMessage").addEventListener('click', function(e) {
+  console.log("aaaaaaaaaaaaaaaaaaaa");
+  console.log(e);
+  // document.onmousemove = function(e){
+    cursorX1 = e.clientX;
+    cursorY1 = e.clientY+5;
+    
+  // }
+});
 
+// document.getElementById("replyMessage").addEventListener('keyup', function(e) {
+//   console.log(e);
+//   console.log("eeeeeeeeeeeeeeeeeeeeee");
+// });
 document.getElementById("replyMessage").addEventListener('keydown', function(e) {
-  // console.log(e);
+
   var replyMessage=undefined;
   if(e !=undefined && e!=null && e.key !=null && e.key !=undefined && e.keyCode !=undefined && e.keyCode > 64 && e.keyCode < 91){
     replyMessage = document.getElementById("replyMessage").value+ e.key;
@@ -2022,7 +2039,7 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
     replyMessage = replyMessage.split("@");
     // console.log(replyMessage.length);
     let text = replyMessage[replyMessage.length - 1];
-    console.log(text);
+    // console.log(text);
 
     $.ajax({
       url: '/find',
@@ -2040,9 +2057,13 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
         // console.log(cursorPosition);
         // console.log($(".editor_widget").position().left);
         // console.log($(".editor_widget").position().top);
-        $('#user_list').css("left",$(".editor_widget").position().left + 100 + cursorPosition );
+        // $('#user_list').css("left",$(".editor_widget").position().left + 100 + cursorPosition );
+        console.log(cursorX1);
+        console.log(cursorY1);
+        $('#user_list').css("left",cursorX1);
         // $('#user_list').css("left",cursorX);
-        $('#user_list').css("top",$(".editor_widget").position().top+40);
+        // $('#user_list').css("top",$(".editor_widget").position().top+40);
+        $('#user_list').css("top",cursorY1);
         if(data && data.users){
         for (var i = 0; i < data.users.length; i++) {
           var txt = data.users[i].name + ' (@' + data.users[i].username + ')';
