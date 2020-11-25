@@ -2002,8 +2002,17 @@ document.getElementById("replyMessage").addEventListener('click', function(e) {
 //   console.log(e);
 //   console.log("eeeeeeeeeeeeeeeeeeeeee");
 // });
+
+    $('#user_list').hide();
+    $('#user_list').empty();
+
 document.getElementById("replyMessage").addEventListener('keydown', function(e) {
 
+  if(!this.value){
+    // alert('The box is empty');
+    $('#user_list').hide();
+    $('#user_list').empty();
+  } 
   var replyMessage=undefined;
   if(e !=undefined && e!=null && e.key !=null && e.key !=undefined && e.keyCode !=undefined && e.keyCode > 64 && e.keyCode < 91){
     replyMessage = document.getElementById("replyMessage").value+ e.key;
@@ -2046,20 +2055,30 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
   // console.log($('#replyMessage').val().length);
   }
 
+  var splited_text = null;
+  splited_text = replyMessage.split(" ");
+  // console.log(splited_text);
+
   var hidden_div = document.getElementById("user_search_grp");
 
   if(replyMessage != undefined && replyMessage != null && hidden_div !=undefined && hidden_div!=null && hidden_div.getAttribute("name") == "true" ){
+    // if(e !=undefined && e!=null && e.key !=null && e.key !=undefined && e.keyCode !=undefined && e.keyCode > 64 && e.keyCode < 91){
+    //   replyMessage = replyMessage+ e.key;
+    // }
+    // else{
+     // replyMessage = replyMessage; 
+    // }
     replyMessage = replyMessage.split("@");
     // console.log(replyMessage.length);
     let text = replyMessage[replyMessage.length - 1];
     // console.log(text);
-
+    if(text.length > 2 && splited_text.length > 0 && splited_text[splited_text.length - 1].includes("@") == true){
     $.ajax({
       url: '/find',
       data: { text: text }
     }).done(
       (data) => {
-        // console.log(data);
+        // console.log("find result..................");
         // $('#users1 option').remove();
         // console.log(document.getElementById("replyMessage"));
         $('#user_list').show();
@@ -2093,6 +2112,13 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
         }
       }
     );
+    }
+    else{
+
+      $('#user_list').hide();
+      $('#user_list').empty();
+
+    }
 
   }
 
