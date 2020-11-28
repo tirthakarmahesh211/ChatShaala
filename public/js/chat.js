@@ -1983,10 +1983,7 @@ function quote(selected_text, selected_node){
 var cursorX1=0;
 var cursorY1=0;
 document.getElementById("replyMessage").addEventListener('click', function(e) {
-  // console.log("aaaaaaaaaaaaaaaaaaaa");
-  // console.log(e);
-  // console.log($('#replyMessage').val().length);
-  // document.onmousemove = function(e){
+
     cursorX1 = e.clientX;
     cursorY1 = e.clientY;
   if(!this.value){
@@ -1998,16 +1995,27 @@ document.getElementById("replyMessage").addEventListener('click', function(e) {
 
 });
 
-// document.getElementById("replyMessage").addEventListener('keyup', function(e) {
-//   console.log(e);
-//   console.log("eeeeeeeeeeeeeeeeeeeeee");
+// document.getElementById("replyMessage").addEventListener('change', function(e) {
+//     $('#user_list').hide();
+//     $('#user_list').empty();
 // });
 
-    $('#user_list').hide();
-    $('#user_list').empty();
+    // $('#user_list').hide();
+    // $('#user_list').empty();
+
+// var rect = document.getElementById("replyMessage").getBoundingClientRect();
+// console.log(rect);
 
 document.getElementById("replyMessage").addEventListener('keydown', function(e) {
+  // console.log(e);
+  var textArea = document.getElementById("replyMessage");
+  var caretPosition = Measurement.caretPos(textArea);
+  console.log(caretPosition.left);
+  console.log(caretPosition.top);
+  cursorX1 = caretPosition.left;
+  cursorY1 = caretPosition.top;
 
+  // console.log(e);
   if(!this.value){
     // alert('The box is empty');
     $('#user_list').hide();
