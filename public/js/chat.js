@@ -1995,23 +1995,16 @@ document.getElementById("replyMessage").addEventListener('click', function(e) {
 
 });
 
-// document.getElementById("replyMessage").addEventListener('change', function(e) {
+// document.getElementById("replyMessage").addEventListener('blur', function(e) {
 //     $('#user_list').hide();
-//     $('#user_list').empty();
+//     $('#user_list').empty();  
 // });
-
-    // $('#user_list').hide();
-    // $('#user_list').empty();
-
-// var rect = document.getElementById("replyMessage").getBoundingClientRect();
-// console.log(rect);
 
 document.getElementById("replyMessage").addEventListener('keydown', function(e) {
   // console.log(e);
   var textArea = document.getElementById("replyMessage");
   var caretPosition = Measurement.caretPos(textArea);
-  console.log(caretPosition.left);
-  console.log(caretPosition.top);
+
   cursorX1 = caretPosition.left;
   cursorY1 = caretPosition.top;
 
@@ -2036,7 +2029,7 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
     var user_search_grp = document.getElementById("user_search_grp");
     user_search_grp.setAttribute("name", "true");
 
-    if ($('#replyMessage').val().length == 0){
+    if ($('#replyMessage').val().length == 0 || $('#replyMessage').val().length == 1){
       // alert("length is 0")
       $('#user_list').hide();
       $('#user_list').empty();
@@ -2055,7 +2048,7 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
     $('#user_list').hide();
     $('#user_list').empty();
   }
-  else if ($('#replyMessage').val().length == 0){
+  else if ($('#replyMessage').val().length == 0 || $('#replyMessage').val().length == 1 ){
     // alert("length is 0")
       $('#user_list').hide();
       $('#user_list').empty();
@@ -2103,19 +2096,19 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
         $('#user_list').css("left",cursorX1);
         // $('#user_list').css("left",cursorX);
         // $('#user_list').css("top",$(".editor_widget").position().top+40);
-        $('#user_list').css("top",cursorY1);
+        $('#user_list').css("top",cursorY1+23);
         if(data && data.users){
         for (var i = 0; i < data.users.length; i++) {
           var txt = data.users[i].name + ' (@' + data.users[i].username + ')';
           // $('#users1').append('<option value=\"' + data.users[i].username + '\">' + txt + '</option>');
-          $('#user_list').append('<option onclick="select_user_or_grp(this)" class="user_grp_info" value=\"' + data.users[i].username +","+ '\">' + txt + '</option>');
+          $('#user_list').append('<option onclick="select_user_or_grp(this)" data-name="'+ data.users[i].name +'" class="user_grp_info" value=\"' + data.users[i].username + '\">' + txt + '</option>');
         }          
         }
         if(data && data.groups){
         for (var i = 0; i < data.groups.length; i++) {
           var txt = data.groups[i].name;
           // $('#users1').append('<option value=\"' + data.groups[i].name + '\">' + txt + '</option>');
-          $('#user_list').append('<option onclick="select_user_or_grp(this)" class="user_grp_info" value=\"' + data.users[i].username +","+ '\">' + txt + '</option>');
+          $('#user_list').append('<option onclick="select_user_or_grp(this)" data-name="'+ data.users[i].name +'" class="user_grp_info" value=\"' + data.users[i].username + '\">' + txt + '</option>');
         }
         }
       }
@@ -2127,8 +2120,33 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
       $('#user_list').empty();
 
     }
-
   }
-
-
 });
+
+document.getElementById("user_list").addEventListener("change", get_user_from_dropdown);
+
+function get_user_from_dropdown(){
+  var selected_value = document.getElementById("user_list").value;
+  // alert(selected_value);
+  // alert($(this).find("option:selected").attr('data-name'))
+  var text = '<a href="/u/'+selected_value+'" class="mention ">' + $(this).find("option:selected").attr('data-name') + '</a>'
+  let first_part_string = "";
+  let last_part_string = "";
+  var body = document.getElementById("replyMessage");
+  if (body!=null && body!=undefined && body.selectionStart!=null && body.selectionStart!=undefined)
+  {
+    // console.log(body.value.substring(0,body.selectionStart));
+    // console.log(body.value.substring(body.selectionStart,body.value.length));
+    first_part_string = body.value.substring(0,body.selectionStart);
+    last_part_string = body.value.substring(body.selectionStart,body.value.length);
+    // first_part_string = first_part_string.split("@");
+    // console.log(first_part_string.split("@")[ first_part_string.split("@").length - 1]);
+    first_part_string = first_part_string.replace("@"+first_part_string.split("@")[ first_part_string.split("@").length - 1],"");
+    // console.log(first_part_string);
+  }
+  let whole_string = first_part_string +" "+ text +" "+ last_part_string;  
+  $("#replyMessage").val(whole_string);
+  $('#user_list').hide();
+  $('#user_list').empty();
+
+}
