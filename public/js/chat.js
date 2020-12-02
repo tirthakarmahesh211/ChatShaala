@@ -2044,7 +2044,7 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
       $('#user_list').hide();
       $('#user_list').empty();
     }
-
+  }
   else if(!this.value){
     // alert('The box is empty');
     $('#user_list').hide();
@@ -2056,7 +2056,6 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
       $('#user_list').empty();
   }
   // console.log($('#replyMessage').val().length);
-  }
 
   var splited_text = null;
   splited_text = replyMessage.split(" ");
