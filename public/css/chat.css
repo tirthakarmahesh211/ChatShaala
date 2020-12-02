@@ -2703,8 +2703,9 @@ a{
 }
 
 #user_list{
-  z-index: 1000001;
+  z-index: 10000011111;
   /*position: absolute;*/
   /*left: 40%;*/
   /*top: 600px;*/
+  top: calc(90%);
 }

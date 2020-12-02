@@ -1997,16 +1997,16 @@ document.getElementById("replyMessage").addEventListener('click', function(e) {
 
 });
 
-// document.getElementById("replyMessage").addEventListener('blur', function(e) {
-//     $('#user_list').hide();
-//     $('#user_list').empty();  
-// });
+document.getElementById("replyMessage").addEventListener('blur', function(e) {
+    $('#user_list').hide();
+    $('#user_list').empty();  
+});
 
 document.getElementById("replyMessage").addEventListener('keydown', function(e) {
   // console.log(e);
   var textArea = document.getElementById("replyMessage");
   var caretPosition = Measurement.caretPos(textArea);
-
+  console.log(textArea.style.height.split("px")[0]);
   cursorX1 = caretPosition.left;
   cursorY1 = caretPosition.top;
 
@@ -2098,21 +2098,42 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
         $('#user_list').css("left",cursorX1);
         // $('#user_list').css("left",cursorX);
         // $('#user_list').css("top",$(".editor_widget").position().top+40);
-        $('#user_list').css("top",cursorY1+23);
-        if(data && data.users){
-        for (var i = 0; i < data.users.length; i++) {
-          var txt = data.users[i].name + ' (@' + data.users[i].username + ')';
-          // $('#users1').append('<option value=\"' + data.users[i].username + '\">' + txt + '</option>');
-          $('#user_list').append('<option onclick="select_user_or_grp(this)" data-name="'+ data.users[i].name +'" class="user_grp_info" value=\"' + data.users[i].username + '\">' + txt + '</option>');
-        }          
+        if(textArea.style.height!=undefined && textArea.style.height!=null && textArea.style.height.split("px")[0] && (parseInt(textArea.style.height.split("px")[0]) < 60)){
+          $('#user_list').css("top",cursorY1);
+          // console.log("if jaj uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
         }
-        if(data && data.groups){
-        for (var i = 0; i < data.groups.length; i++) {
-          var txt = data.groups[i].name;
-          // $('#users1').append('<option value=\"' + data.groups[i].name + '\">' + txt + '</option>');
-          $('#user_list').append('<option onclick="select_user_or_grp(this)" data-name="'+ data.users[i].name +'" class="user_grp_info" value=\"' + data.users[i].username + '\">' + txt + '</option>');
+        else if(textArea.style.height!=undefined && textArea.style.height!=null && textArea.style.height.split("px")[0] && (parseInt(textArea.style.height.split("px")[0]) > 60) && (parseInt(textArea.style.height.split("px")[0]) < 180)){
+          // $('#user_list').css("top",(cursorY1 - (Math.round( ((parseInt(textArea.style.height.split("px")[0]) /17) * 5 ) ))));
+          $('#user_list').css("top","86%");
+          // console.log("if jaj akjskjas")
         }
+        else if(textArea.style.height!=undefined && textArea.style.height!=null && textArea.style.height.split("px")[0] && (parseInt(textArea.style.height.split("px")[0]) > 180) && (parseInt(textArea.style.height.split("px")[0]) < 280)){
+          // $('#user_list').css("top",(cursorY1 + 23));
+          $('#user_list').css("top","86%");
+          // console.log("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+          // console.log(user_list);
         }
+        else{
+          // $('#user_list').css("top", (screen.height));
+          // console.log("else block");
+          // console.log(screen.height);
+          // console.log()
+          $('#user_list').css("top","88%");
+        }
+          if(data && data.users){
+          for (var i = 0; i < data.users.length; i++) {
+            var txt = data.users[i].name + ' (@' + data.users[i].username + ')';
+            // $('#users1').append('<option value=\"' + data.users[i].username + '\">' + txt + '</option>');
+            $('#user_list').append('<option onclick="select_user_or_grp(this)" data-name="'+ data.users[i].name +'" class="user_grp_info" value=\"' + data.users[i].username + '\">' + txt + '</option>');
+          }          
+          }
+          if(data && data.groups){
+          for (var i = 0; i < data.groups.length; i++) {
+            var txt = data.groups[i].name;
+            // $('#users1').append('<option value=\"' + data.groups[i].name + '\">' + txt + '</option>');
+            $('#user_list').append('<option onclick="select_user_or_grp(this)" data-name="'+ data.users[i].name +'" class="user_grp_info" value=\"' + data.users[i].username + '\">' + txt + '</option>');
+          }
+          }
       }
     );
     }
