@@ -1997,10 +1997,10 @@ document.getElementById("replyMessage").addEventListener('click', function(e) {
 
 });
 
-document.getElementById("replyMessage").addEventListener('blur', function(e) {
-    $('#user_list').hide();
-    $('#user_list').empty();  
-});
+// document.getElementById("replyMessage").addEventListener('blur', function(e) {
+//     $('#user_list').hide();
+//     $('#user_list').empty();  
+// });
 
 document.getElementById("replyMessage").addEventListener('keydown', function(e) {
   // console.log(e);
@@ -2099,8 +2099,8 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
         // $('#user_list').css("left",cursorX);
         // $('#user_list').css("top",$(".editor_widget").position().top+40);
         if(textArea.style.height!=undefined && textArea.style.height!=null && textArea.style.height.split("px")[0] && (parseInt(textArea.style.height.split("px")[0]) < 60)){
-          $('#user_list').css("top",cursorY1);
-          // console.log("if jaj uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
+          $('#user_list').css("top","82%");
+          console.log("if jaj uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
         }
         else if(textArea.style.height!=undefined && textArea.style.height!=null && textArea.style.height.split("px")[0] && (parseInt(textArea.style.height.split("px")[0]) > 60) && (parseInt(textArea.style.height.split("px")[0]) < 180)){
           // $('#user_list').css("top",(cursorY1 - (Math.round( ((parseInt(textArea.style.height.split("px")[0]) /17) * 5 ) ))));
