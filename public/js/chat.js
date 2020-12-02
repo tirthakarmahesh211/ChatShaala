@@ -1962,10 +1962,13 @@ function quote(selected_text, selected_node){
   replymessage.value = "";
   if(selected_node!=undefined && selected_node!=null && selected_node.anchorNode!=undefined && selected_node.anchorNode!=null && selected_node.anchorNode.parentElement!=undefined && selected_node.anchorNode.parentElement!=null){
     // console.log("if block");
+    // console.log(selected_node.anchorNode.parentElement.offsetParent.offsetParent.textContent.trim().split(" ")[0] );
+    var username = selected_node.anchorNode.parentElement.offsetParent.offsetParent.textContent.trim().split(" ")[0]!=undefined ? selected_node.anchorNode.parentElement.offsetParent.offsetParent.textContent.trim().split(" ")[0]:document.getElementById("curr_user").getAttribute("name");
     let topic_id = selected_node.anchorNode.parentElement.offsetParent.offsetParent.id.split("_")[1];
     let post_id = selected_node.anchorNode.parentElement.offsetParent.offsetParent.id.split("_")[2];
 
-    quote_text = '[quote="'+document.getElementById("curr_user").getAttribute("name")+', post:'+ post_id +', topic:'+ topic_id +'"]'+ selected_text +'[/quote] \n ';
+    // quote_text = '[quote="'+document.getElementById("curr_user").getAttribute("name")+', post:'+ post_id +', topic:'+ topic_id +'"]'+ selected_text +'[/quote] \n ';
+    quote_text = '[quote="'+username+', post:'+ post_id +', topic:'+ topic_id +'"]'+ selected_text +'[/quote] \n ';
     // let selected_node.anchorNode.parentElement.offsetParent.offsetParent.id
     // console.log(quote_text);
     if(topic_id == undefined || post_id == undefined || topic_id == null || post_id == null){
@@ -2099,18 +2102,13 @@ document.getElementById("replyMessage").addEventListener('keydown', function(e) 
         // $('#user_list').css("top",$(".editor_widget").position().top+40);
         if(textArea.style.height!=undefined && textArea.style.height!=null && textArea.style.height.split("px")[0] && (parseInt(textArea.style.height.split("px")[0]) < 60)){
           $('#user_list').css("top","82%");
-          console.log("if jaj uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
         }
         else if(textArea.style.height!=undefined && textArea.style.height!=null && textArea.style.height.split("px")[0] && (parseInt(textArea.style.height.split("px")[0]) > 60) && (parseInt(textArea.style.height.split("px")[0]) < 180)){
           // $('#user_list').css("top",(cursorY1 - (Math.round( ((parseInt(textArea.style.height.split("px")[0]) /17) * 5 ) ))));
           $('#user_list').css("top","86%");
-          // console.log("if jaj akjskjas")
         }
         else if(textArea.style.height!=undefined && textArea.style.height!=null && textArea.style.height.split("px")[0] && (parseInt(textArea.style.height.split("px")[0]) > 180) && (parseInt(textArea.style.height.split("px")[0]) < 280)){
-          // $('#user_list').css("top",(cursorY1 + 23));
           $('#user_list').css("top","86%");
-          // console.log("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
-          // console.log(user_list);
         }
         else{
           // $('#user_list').css("top", (screen.height));
