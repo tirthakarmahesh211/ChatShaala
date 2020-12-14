@@ -996,9 +996,13 @@ function myFunc() {
 
             let chk_pvt_or_regular_msg = (type_of_msg == "regular") ? true : false;
             let share_button='';
+            var flag_button = "";
             // console.log(chk_pvt_or_regular_msg);
             if(chk_pvt_or_regular_msg == true){
               share_button = '<div class="share_btn" id="share_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="share a link to this post" onclick="share_function(this)"><i class="fa fa-share-alt "></i></div>'
+            }
+            if(chk_pvt_or_regular_msg == true){
+              flag_button = '<div class="flag_btn" id="flag_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="Privately flag this post for attention or send a private notification about it" onclick="flag_function(this)"><i class="fa fa-share-alt "></i></div>'
             }
             let edit_button = '<div class="edit_btn" id="edit_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" data-post_id="'+ data[i].id +'" title="edit this post" onclick="edit_function(this)"><i class="fa fa-pencil" aria-hidden="true"></i></div>'
             let setting_button = (username!="system" && username!="" && username!=null && username!=undefined)?'<div class="setting_btn" id="setting_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" data-post_id="'+ data[i].id +'" title="" onclick="setting_function(this)"><i class="fa fa-external-link"></i></div>':'';
