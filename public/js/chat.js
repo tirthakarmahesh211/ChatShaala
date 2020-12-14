@@ -1002,7 +1002,7 @@ function myFunc() {
               share_button = '<div class="share_btn" id="share_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="share a link to this post" onclick="share_function(this)"><i class="fa fa-share-alt "></i></div>'
             }
             if(chk_pvt_or_regular_msg == true){
-              flag_button = '<div class="flag_btn" id="flag_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="Privately flag this post for attention or send a private notification about it" onclick="flag_function(this)"><i class="fa fa-flag-alt"></i></div>'
+              flag_button = '<div class="flag_btn" id="flag_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="Privately flag this post for attention or send a private notification about it" onclick="flag_function(this)"><i class="fa fa-flag" aria-hidden="true"></i></div>'
             }
             let edit_button = '<div class="edit_btn" id="edit_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" data-post_id="'+ data[i].id +'" title="edit this post" onclick="edit_function(this)"><i class="fa fa-pencil" aria-hidden="true"></i></div>'
             let setting_button = (username!="system" && username!="" && username!=null && username!=undefined)?'<div class="setting_btn" id="setting_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" data-post_id="'+ data[i].id +'" title="" onclick="setting_function(this)"><i class="fa fa-external-link"></i></div>':'';
@@ -1044,7 +1044,7 @@ function myFunc() {
                 }
                 else{
 
-                  elements = elements + '<div '+ ((Number(index_of_post_number) > i)?'style="display:none;"':'') +' id="msg_'+ data[i].topic_id + '_' + data[i].post_number+ '_' + posts_count+ '_' + page_number+'" ' + post_id + 'class="message info" data-count="'+ (stream != undefined? stream.indexOf((Number(data[i].id))): null) +'"> <div class="message-body">' + '<div class="message-info">' + '<b>' + User_Name + '</b>' + in_reply_to+' </h3>' + message_datetime+'</div>' + '<hr>'  + '<div data-POSTID="'+ data[i].id +'" class="message-text">' + data[i].cooked + '</div>'+'  '+ReplyBtn +setting_button+share_button+like_button+'</div>' + '<br>' + '</div>';                }  
+                  elements = elements + '<div '+ ((Number(index_of_post_number) > i)?'style="display:none;"':'') +' id="msg_'+ data[i].topic_id + '_' + data[i].post_number+ '_' + posts_count+ '_' + page_number+'" ' + post_id + 'class="message info" data-count="'+ (stream != undefined? stream.indexOf((Number(data[i].id))): null) +'"> <div class="message-body">' + '<div class="message-info">' + '<b>' + User_Name + '</b>' + in_reply_to+' </h3>' + message_datetime+'</div>' + '<hr>'  + '<div data-POSTID="'+ data[i].id +'" class="message-text">' + data[i].cooked + '</div>'+'  '+ReplyBtn +setting_button+share_button+like_button+flag_button+'</div>' + '<br>' + '</div>';                }  
               }
             }
             else {
@@ -1275,7 +1275,7 @@ function myFunc() {
                     share_button = '<div class="share_btn" id="share_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="share a link to this post" onclick="share_function(this)"><i class="fa fa-share-alt "></i></div>'
                   }
                   if(chk_pvt_or_regular_msg == true){
-                    flag_button = '<div class="flag_btn" id="flag_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="Privately flag this post for attention or send a private notification about it" onclick="flag_function(this)"><i class="fa fa-flag-alt "></i></div>'
+                    flag_button = '<div class="flag_btn" id="flag_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="Privately flag this post for attention or send a private notification about it" onclick="flag_function(this)"><i class="fa fa-flag" aria-hidden="true"></i></div>'
                   }
                   if(data[i].username !=null && data[i].username!=undefined && data[i].username != username){
                     //style="margin-left: '+ marginLeft +'; width: calc(100% - '+ marginLeft +') "

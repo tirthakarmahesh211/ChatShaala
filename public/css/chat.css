@@ -2709,3 +2709,10 @@ a{
   /*top: 600px;*/
   top: calc(90%);
 }
+
+.flag_btn{
+    float: right;
+  cursor: pointer;
+  padding-right: 5px;
+  margin-right: 8px;
+}
