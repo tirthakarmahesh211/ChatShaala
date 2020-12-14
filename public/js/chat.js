@@ -2181,3 +2181,19 @@ function get_user_from_dropdown(){
   $('#user_list').hide();
   $('#user_list').empty();
 }
+
+
+    function flag_function(clicked_element_data){
+      // console.log(clicked_element_data);
+
+      // if(clicked_element_data){
+      //   id = clicked_element_data.id.split("_")
+      //   tid = id[2];
+      //   post_number = id[3];
+      //   var id = clicked_element_data.id;
+
+
+
+      // }
+      alert("flag");
+    }
