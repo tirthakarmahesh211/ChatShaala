@@ -1001,9 +1001,10 @@ function myFunc() {
             if(chk_pvt_or_regular_msg == true){
               share_button = '<div class="share_btn" id="share_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="share a link to this post" onclick="share_function(this)"><i class="fa fa-share-alt "></i></div>'
             }
-            if(chk_pvt_or_regular_msg == true){
-              flag_button = '<div class="flag_btn" id="flag_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="Privately flag this post for attention or send a private notification about it" onclick="flag_function(this)"><i class="fa fa-flag" aria-hidden="true"></i></div>'
-            }
+            // if(chk_pvt_or_regular_msg == true){
+
+            flag_button = (username!="system" && username!="" && username!=null && username!=undefined)?'<div class="flag_btn" id="flag_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="Privately flag this post for attention or send a private notification about it" onclick="flag_function(this)"><i class="fa fa-flag" aria-hidden="true"></i></div>':'';
+            // }
             let edit_button = '<div class="edit_btn" id="edit_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" data-post_id="'+ data[i].id +'" title="edit this post" onclick="edit_function(this)"><i class="fa fa-pencil" aria-hidden="true"></i></div>'
             let setting_button = (username!="system" && username!="" && username!=null && username!=undefined)?'<div class="setting_btn" id="setting_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" data-post_id="'+ data[i].id +'" title="" onclick="setting_function(this)"><i class="fa fa-external-link"></i></div>':'';
             let in_reply_to = "";
@@ -1275,7 +1276,7 @@ function myFunc() {
                     share_button = '<div class="share_btn" id="share_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="share a link to this post" onclick="share_function(this)"><i class="fa fa-share-alt "></i></div>'
                   }
                   if(chk_pvt_or_regular_msg == true){
-                    flag_button = '<div class="flag_btn" id="flag_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="Privately flag this post for attention or send a private notification about it" onclick="flag_function(this)"><i class="fa fa-flag" aria-hidden="true"></i></div>'
+                    flag_button = (username!="system" && username!="" && username!=null && username!=undefined)?'<div class="flag_btn" id="flag_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="Privately flag this post for attention or send a private notification about it" onclick="flag_function(this)"><i class="fa fa-flag" aria-hidden="true"></i></div>':'';
                   }
                   if(data[i].username !=null && data[i].username!=undefined && data[i].username != username){
                     //style="margin-left: '+ marginLeft +'; width: calc(100% - '+ marginLeft +') "
@@ -1762,7 +1763,7 @@ function get_specific_post_replies(selected_element){
           share_button = '<div class="share_btn" id="share_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="share a link to this post" onclick="share_function(this)"><i class="fa fa-share-alt "></i></div>'
         }
         if(chk_pvt_or_regular_msg == true){
-          flag_button = '<div class="flag_btn" id="flag_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="" onclick="flag_function(this)"><i class="fa fa-flag-alt "></i></div>'
+          flag_button = (username!="system" && username!="" && username!=null && username!=undefined)?'<div class="flag_btn" id="flag_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="" onclick="flag_function(this)"><i class="fa fa-flag-alt "></i></div>':'';
         }
         if(data[i].username !=null && data[i].username!=undefined && data[i].username != username){
           //style="margin-left: '+ marginLeft +'; width: calc(100% - '+ marginLeft +') "
