@@ -2184,16 +2184,16 @@ function get_user_from_dropdown(){
 
 
     function flag_function(clicked_element_data){
-      // console.log(clicked_element_data);
 
-      // if(clicked_element_data){
-      //   id = clicked_element_data.id.split("_")
-      //   tid = id[2];
-      //   post_number = id[3];
-      //   var id = clicked_element_data.id;
+      let post_id = clicked_element_data.id.split("_")[clicked_element_data.id.split("_").length - 1];
+      let post_action_type_id = 4;
+      let flag_topic = false;
 
+      $.ajax({
+          url: "/set_flag/"+post_id+"/"+post_action_type_id,
+          type: 'POST'
+      })
+      .done(function (data) {
+      });
 
-
-      // }
-      alert("flag");
     }

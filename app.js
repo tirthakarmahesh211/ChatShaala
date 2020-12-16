@@ -1179,3 +1179,12 @@ app.get('/badges/:post_ids', function(req,res){
     });
   });
 });
+
+app.post('/set_flag/:post_id/:post_action_type_id', function (req, res) {
+  let curr_user = req.session.user;
+  if (curr_user) {
+      func.flag(req,res);
+  } else {
+    res.redirect('/login');
+  }
+});
