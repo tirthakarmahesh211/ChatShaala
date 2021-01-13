@@ -133,13 +133,14 @@ app.get('/', function (req, res) {
   if (curr_user == null || curr_user==undefined) {
     curr_user = {username:'system'};
   }
+  if (req.session.user) {
     let page_url = "/";
     res.render('home.ejs', {
       home: home, about: about, blog: blog, project: project, feedback: feedback, logout: logout, profile: profile, curr_user: curr_user,url:secrets.url,page_url:page_url
     });
-  // } else {
-  //   res.redirect('/login');
-  // }
+  } else {
+    res.redirect('/login');
+  }
 });
 
 app.post('/', function (req, res) {
