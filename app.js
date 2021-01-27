@@ -129,6 +129,25 @@ app.get('/chat', function (req, res) {
 
 app.get('/', function (req, res) {
   // res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
+
+  const fs = require('fs');
+  var theme_color=undefined;
+  console.log("theme_color");
+  let rawdata = fs.readFileSync('settings.json');
+  var json_data = {}
+  if (rawdata !=undefined && rawdata != null)
+  {
+    json_data = JSON.parse(rawdata);
+  }
+  // fs.readFileSync('settings.json', (err, data) => {
+  //   console.log(err);
+  //   console.log(data);
+  //   if (err) throw err;
+  //   let json_data = JSON.parse(data);
+  //   console.log(json_data["features"][0]);
+  //   theme_color = json_data["theme_color"]
+  // });
+  theme_color = json_data["theme_color"]
   let curr_user = req.session.user;
   if (curr_user == null || curr_user==undefined) {
     curr_user = {username:'system'};
@@ -136,7 +155,7 @@ app.get('/', function (req, res) {
   // if (req.session.user) {
     let page_url = "/";
     res.render('home.ejs', {
-      home: home, about: about, blog: blog, project: project, feedback: feedback, logout: logout, profile: profile, curr_user: curr_user,url:secrets.url,page_url:page_url
+      home: home, about: about, blog: blog, project: project, feedback: feedback, logout: logout, profile: profile, curr_user: curr_user,url:secrets.url,page_url:page_url,theme_color: theme_color
     });
   // } else {
   //   res.redirect('/login');
