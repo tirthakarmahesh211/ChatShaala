@@ -137,6 +137,7 @@ app.get('/', function (req, res) {
   var json_data = {}
   if (rawdata !=undefined && rawdata != null)
   {
+    console.log(rawdata);
     json_data = JSON.parse(rawdata);
   }
   // fs.readFileSync('settings.json', (err, data) => {

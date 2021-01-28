@@ -951,7 +951,7 @@ function myFunc() {
           // console.log(array_to_store_post_number);
           // console.log( localStorage.getItem("settings"));
           for (var i = 0; i < data.length; i++) {
-            console.log(document.getElementById("features").getAttribute("name").indexOf("download_btn"));
+            // console.log(document.getElementById("features").getAttribute("name").indexOf("download_btn"));
             if (document.getElementById("features").getAttribute("name").indexOf("download_btn")!=-1){
               download_btn = '<div class="download_div"><span id="download_' + data[i].id + '" style="display:inline-block;"></span><a target="_blank" id="download_' + data[i].id + '" href="'+ ((data[i].link_counts && data[i].link_counts.length > 0 && data[i].link_counts[0].url)?data[i].link_counts[0].url:"#") +'" download><i title="Download the resource" class="fa fa-download" aria-hidden="true"></i></a></div>'
             }
@@ -1007,8 +1007,9 @@ function myFunc() {
               share_button = '<div class="share_btn" id="share_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="share a link to this post" onclick="share_function(this)"><i class="fa fa-share-alt "></i></div>'
             }
             // if(chk_pvt_or_regular_msg == true){
-
-            flag_button = (username!="system" && username!="" && username!=null && username!=undefined)?'<div class="flag_btn" id="flag_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="Privately flag this post for attention or send a private notification about it" onclick="flag_function(this)"><i class="fa fa-flag" aria-hidden="true"></i></div>':'';
+            if(document.getElementById("features").getAttribute("name").indexOf("flag_btn")!=-1){
+              flag_button = (username!="system" && username!="" && username!=null && username!=undefined)?'<div class="flag_btn" id="flag_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" title="Privately flag this post for attention or send a private notification about it" onclick="flag_function(this)"><i class="fa fa-flag" aria-hidden="true"></i></div>':'';
+            }
             // }
             let edit_button = '<div class="edit_btn" id="edit_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" data-post_id="'+ data[i].id +'" title="edit this post" onclick="edit_function(this)"><i class="fa fa-pencil" aria-hidden="true"></i></div>'
             let setting_button = (username!="system" && username!="" && username!=null && username!=undefined)?'<div class="setting_btn" id="setting_btn_'+ data[i].topic_id + '_' + data[i].post_number +'_' + data[i].id+'" data-tslug="'+slug+'" data-post_id="'+ data[i].id +'" title="" onclick="setting_function(this)"><i class="fa fa-external-link"></i></div>':'';
