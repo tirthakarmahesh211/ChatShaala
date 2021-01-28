@@ -132,6 +132,7 @@ app.get('/', function (req, res) {
 
   const fs = require('fs');
   var theme_color=undefined;
+  var menus = undefined;
   // console.log("theme_color");
   let rawdata = fs.readFileSync('settings.json');
   var json_data = {}
@@ -148,8 +149,10 @@ app.get('/', function (req, res) {
   //   console.log(json_data["features"][0]);
   //   theme_color = json_data["theme_color"]
   // });
-  theme_color = json_data["theme_color"]
+  menus = json_data["menus"]
+  console.log("menus")
   features = json_data["features"]
+  theme_color = json_data["theme_color"]
   let curr_user = req.session.user;
   if (curr_user == null || curr_user==undefined) {
     curr_user = {username:'system'};
@@ -157,7 +160,7 @@ app.get('/', function (req, res) {
   // if (req.session.user) {
     let page_url = "/";
     res.render('home.ejs', {
-      home: home, about: about, blog: blog, project: project, feedback: feedback, logout: logout, profile: profile, curr_user: curr_user,url:secrets.url,page_url:page_url,theme_color: theme_color, features: features
+      home: home, about: about, blog: blog, project: project, feedback: feedback, logout: logout, profile: profile, curr_user: curr_user,url:secrets.url,page_url:page_url,theme_color: theme_color, features: features,menus:menus
     });
   // } else {
   //   res.redirect('/login');
