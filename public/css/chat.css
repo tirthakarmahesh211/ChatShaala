@@ -2716,3 +2716,14 @@ a{
   padding-right: 5px;
   margin-right: 8px;
 }
+
+.download_div {
+  float: right;
+  padding-right: 10px;
+  font-size: 16px;
+}
+
+.fa-download{
+  color: #333232e3;
+  cursor: pointer;
+}
